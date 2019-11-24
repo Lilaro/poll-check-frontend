@@ -1,30 +1,36 @@
 import './App.css';
-import ReactMapGL from 'react-map-gl'
-import React, {useState, useEffect } from 'react'
+// import {useSelector, useDispatch} from 'react-redux'
+import ReactMapGL, {Marker} from 'react-map-gl'
+import React, {Component} from 'react'
+import LoginContainer from './components/LoginContainer'
+import ChatContainer from './components/ChatContainer'
+import Sidebar from './components/Sidebar'
 
-export default function App(props) {
+export class App extends Component {
 
-  const [viewport, setViewport] = useState({
-    latitude: 40.736191,
-    longitude: -73.920345,
-    width: "100vw",
-    height: "100vh",
-    zoom: 10
-  })
+  state = {
+    sites: []
+  }
+    
+  componentDidMount() {
+    fetch('http://localhost:3000/poll_sites')
+    .then(resp => resp.json())
+    .then(data => this.setState({
+      pollSites: data
+    }))
+  }
   
+
+  render() {
     return (
       <div>
-        <ReactMapGL {...viewport}
-          mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-          mapStyle="mapbox://styles/lisalarochelle/ck36bxl2r08n81cpi5b8l1u7v"
-          onViewportChange={(viewport) => {
-          setViewport(viewport)
-          }
-        }
-        >
-          map
-        </ReactMapGL>
+        {/* {this.state.pollSites.map(site => site={site})} */}
+        <LoginContainer></LoginContainer>
+        <ChatContainer></ChatContainer>
+        <Sidebar sites={this.state.sites}></Sidebar>
       </div>
     )
-
+  }
 }
+
+export default App 
