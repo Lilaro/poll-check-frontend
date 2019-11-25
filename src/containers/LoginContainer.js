@@ -35,6 +35,7 @@ export default class LoginContainer extends Component {
             })
             } else {
             this.props.gotToken(data.token, data.user_id)
+            this.props.history.push('/home')
             }
         })
     }
@@ -61,6 +62,7 @@ export default class LoginContainer extends Component {
             })
           } else {
             this.props.gotToken(data.token, data.user_id)
+            this.props.history.push('/home')
           }
         })
       }

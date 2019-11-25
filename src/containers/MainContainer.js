@@ -19,6 +19,7 @@ componentDidMount() {
     render() {
         return (
             <div>
+                Home
                 <ChatContainer>Chat</ChatContainer>
                 <Sidebar sites={this.state.sites}>Sidebar</Sidebar>
             </div>

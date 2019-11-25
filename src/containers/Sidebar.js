@@ -6,6 +6,7 @@ export class Sidebar extends Component {
     render() {
         return (
             <div>
+                Sidebar
              {/* {this.props.sites.map(site => 
                 <Site site={site}></Site>)}  */}
             </div>
