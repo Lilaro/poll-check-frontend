@@ -13,16 +13,14 @@ export class App extends Component {
     email: null
   }
 
-  gotToken = (token, userId, email) => {
+  gotToken = (token, userId) => {
     localStorage.token = token
     localStorage.userId = userId
-    // localStorage.email = email
 
     this.setState({
       token,
-      userId,
-      // email
-    })
+      userId
+    }, () => console.log('gotToken invoked', this.state.userId))
   }
       
   render() {
@@ -32,6 +30,8 @@ export class App extends Component {
         
         <MainContainer token={this.state.token}
           userId={this.state.userId}>
+          Main Container
+          Main Container
           Main Container
         </MainContainer>
          :
