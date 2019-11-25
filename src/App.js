@@ -1,34 +1,46 @@
 import './App.css';
 // import {useSelector, useDispatch} from 'react-redux'
-import ReactMapGL, {Marker} from 'react-map-gl'
+// import ReactMapGL, {Marker} from 'react-map-gl'
 import React, {Component} from 'react'
-import LoginContainer from './components/LoginContainer'
-import ChatContainer from './components/ChatContainer'
-import Sidebar from './components/Sidebar'
+import LoginContainer from './containers/LoginContainer'
+import MainContainer from './containers/MainContainer'
 
 export class App extends Component {
 
   state = {
-    sites: []
+    token: null,
+    userId: null,
+    email: null
   }
-    
-  componentDidMount() {
-    fetch('http://localhost:3000/poll_sites')
-    .then(resp => resp.json())
-    .then(data => this.setState({
-      pollSites: data
-    }))
-  }
-  
 
+  gotToken = (token, userId, email) => {
+    localStorage.token = token
+    localStorage.userId = userId
+    // localStorage.email = email
+
+    this.setState({
+      token,
+      userId,
+      // email
+    })
+  }
+      
   render() {
     return (
-      <div>
-        {/* {this.state.pollSites.map(site => site={site})} */}
-        <LoginContainer></LoginContainer>
-        <ChatContainer></ChatContainer>
-        <Sidebar sites={this.state.sites}></Sidebar>
-      </div>
+      <>
+      {this.state.token ?
+        
+        <MainContainer token={this.state.token}
+          userId={this.state.userId}>
+          Main Container
+        </MainContainer>
+         :
+        <LoginContainer gotToken={this.gotToken}>
+          Login
+        </LoginContainer>
+       
+      }
+      </>
     )
   }
 }
