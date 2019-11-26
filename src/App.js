@@ -11,16 +11,19 @@ export class App extends Component {
   state = {
     token: null,
     userId: null,
-    email: null
+    email: null,
+    name: null
   }
 
-  gotToken = (token, userId) => {
+  gotToken = (token, userId, name) => {
     localStorage.token = token
     localStorage.userId = userId
+    localStorage.name = name
 
     this.setState({
       token,
-      userId
+      userId,
+      name
     }, () => console.log('gotToken invoked', this.state.userId))
   }
       

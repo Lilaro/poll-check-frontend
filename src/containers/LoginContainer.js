@@ -34,7 +34,7 @@ export default class LoginContainer extends Component {
                 errors: data.message
             })
             } else {
-            this.props.gotToken(data.token, data.user_id)
+            this.props.gotToken(data.token, data.user.id, data.user.name)
             this.props.history.push('/home')
             }
         })
@@ -56,12 +56,13 @@ export default class LoginContainer extends Component {
         })
         .then(resp => resp.json())
         .then(data => {
+          console.log(data)
           if (data.errors) {
             this.setState({
               errors: data.errors
             })
           } else {
-            this.props.gotToken(data.token, data.user_id)
+            this.props.gotToken(data.token, data.user.id, data.user.name)
             this.props.history.push('/home')
           }
         })
