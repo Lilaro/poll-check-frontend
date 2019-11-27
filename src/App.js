@@ -46,13 +46,3 @@ export class App extends Component {
 }
 
 export default App 
-        //  <MainContainer token={this.state.token}
-        //   userId={this.state.userId}>
-        //   Main Container
-        //   Main Container
-        //   Main Container
-        // </MainContainer>
-         
-        // <LoginContainer gotToken={this.gotToken}>
-        //   Login
-        // </LoginContainer>
