@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ChatContainer from './ChatContainer';
+import SiteContainer from './SiteContainer';
 import Sidebar from './Sidebar';
 import {Card, Grid} from 'semantic-ui-react'
 
@@ -17,16 +17,6 @@ export class MainContainer extends Component {
         .then(data => this.setState({
             sites: data
         }))
-    }
-
-    searchResults = (searchWord) => {
-        // debugger
-        if (this.state.sites) {
-            return this.state.sites.filter(site => {
-                if (site.voter_entrance && this.state.searchTerm !== ""){
-                return site.voter_entrance.includes(searchWord.toLowerCase())}
-            })
-        } 
     }
 
     handleChange = (e) => {   
@@ -50,23 +40,11 @@ export class MainContainer extends Component {
         return (
             <Grid columns={2}>
                 <Grid.Column>
-                    Find your poll site
-                    <form>
-                        <input type="text" placeholder="street address" onChange={this.handleChange}></input>
-                    </form>
-                    <ul>
-                    { this.searchResults(this.state.searchTerm).map(site => {
-                        return <Card   siteId={site.id}
-                        onClick={this.handleSiteClick}>
-                        {site.voter_entrance}, {site.city} - <strong>{site.site_name} </strong>
-                        </Card>
-                        })
-                    }
-                    </ul>
-                    {this.state.siteClicked ?
-                    <ChatContainer token={this.props.token}>Chat Container</ChatContainer>
-                    :
-                    null}
+                   <SiteContainer searchTerm={this.state.searchTerm}
+                   sites={this.state.sites}
+                   siteClicked={this.state.siteClicked}
+                   handleSiteClick={this.handleSiteClick}
+                   handleChange={this.handleChange}></SiteContainer>
                 </Grid.Column>
                 <Grid.Column>
                     <Sidebar sites={this.state.sites} 
@@ -80,3 +58,4 @@ export class MainContainer extends Component {
 }
 
 export default MainContainer
+
