@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ChatContainer from './ChatContainer';
 import Sidebar from './Sidebar';
+import {Card} from 'semantic-ui-react'
 
 export class MainContainer extends Component {
 
@@ -45,7 +46,7 @@ export class MainContainer extends Component {
                 </form>
                 <ul>
                 { this.searchResults(this.state.searchTerm).map(site => {
-                    return <li> {site.voter_entrance}, {site.city} - <strong>{site.site_name} </strong></li>
+                    return <Card> {site.voter_entrance}, {site.city} - <strong>{site.site_name} </strong></Card>
                     })
                 }
                 </ul>

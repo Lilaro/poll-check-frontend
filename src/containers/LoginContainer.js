@@ -1,6 +1,14 @@
 import React, {Component} from 'react';
 import Login from '../components/Login';
-import Signup from '../components/Signup'
+import Signup from '../components/Signup';
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Message,
+  Segment,
+} from 'semantic-ui-react'
 
 export default class LoginContainer extends Component {
 
@@ -77,14 +85,16 @@ export default class LoginContainer extends Component {
 
     render(){
         return (
-        <>
+        <Grid>
+          <Grid.Column>
             <Login 
                 loginEmail={this.state.loginEmail}
                 loginPassword={this.state.loginPassword}
                 handleChange={this.handleChange} 
                 loginSubmitted={this.loginSubmitted}
             />
-              <br/>
+          </Grid.Column>
+          <Grid.Column>
             <Signup 
             signupName={this.state.signupName} 
             signupEmail={this.state.signupEmail}
@@ -92,7 +102,39 @@ export default class LoginContainer extends Component {
             handleChange={this.handleChange} 
             SignUpSubmitted={this.SignUpSubmitted}
             />
-        </>
+          </Grid.Column>
+        </Grid>
         )
     }
 }
+
+{/* <Grid centered columns={2}>
+    <Grid.Column>
+      <Header as="h2" textAlign="center">
+        Login
+      </Header>
+      <Segment>
+        <Form size="large">
+          <Form.Input
+            fluid
+            icon="user"
+            iconPosition="left"
+            placeholder="Email address"
+          />
+          <Form.Input
+            fluid
+            icon="lock"
+            iconPosition="left"
+            placeholder="Password"
+            type="password"
+          />
+          <Button color="blue" fluid size="large">
+            Login
+          </Button>
+        </Form>
+      </Segment>
+      <Message>
+        Not registered yet? <a href="#">Sign Up</a>
+      </Message>
+    </Grid.Column>
+  </Grid> */}
