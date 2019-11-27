@@ -7,7 +7,8 @@ export class MainContainer extends Component {
 
     state = {
         sites: [],
-        searchTerm: ""
+        searchTerm: "",
+        siteClicked: false
     }
 
     componentDidMount() {
@@ -35,6 +36,14 @@ export class MainContainer extends Component {
         }, () => this.searchResults(this.state.searchTerm))
     }
 
+    handleSiteClick = (e) => {
+        e.preventDefault()
+        this.setState({
+            siteClicked: true
+        })
+
+    }
+
     render() {
         console.log(this.state.sites)
       
@@ -47,11 +56,17 @@ export class MainContainer extends Component {
                     </form>
                     <ul>
                     { this.searchResults(this.state.searchTerm).map(site => {
-                        return <Card> {site.voter_entrance}, {site.city} - <strong>{site.site_name} </strong></Card>
+                        return <Card   siteId={site.id}
+                        onClick={this.handleSiteClick}>
+                        {site.voter_entrance}, {site.city} - <strong>{site.site_name} </strong>
+                        </Card>
                         })
                     }
                     </ul>
-                    <ChatContainer>Chat</ChatContainer>
+                    {this.state.siteClicked ?
+                    <ChatContainer token={this.props.token}>Chat Container</ChatContainer>
+                    :
+                    null}
                 </Grid.Column>
                 <Grid.Column>
                     <Sidebar sites={this.state.sites} 
