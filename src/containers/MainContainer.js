@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ChatContainer from './ChatContainer';
 import Sidebar from './Sidebar';
-import {Card} from 'semantic-ui-react'
+import {Card, Grid} from 'semantic-ui-react'
 
 export class MainContainer extends Component {
 
@@ -39,22 +39,26 @@ export class MainContainer extends Component {
         console.log(this.state.sites)
       
         return (
-            <div>
-                Home
-                <form>
-                    <input type="text" placeholder="street address" onChange={this.handleChange}></input>
-                </form>
-                <ul>
-                { this.searchResults(this.state.searchTerm).map(site => {
-                    return <Card> {site.voter_entrance}, {site.city} - <strong>{site.site_name} </strong></Card>
-                    })
-                }
-                </ul>
-                <ChatContainer>Chat</ChatContainer>
-                <Sidebar sites={this.state.sites}>
-                    Sidebar
-                </Sidebar>
-            </div>
+            <Grid columns={2}>
+                <Grid.Column>
+                    Find your poll site
+                    <form>
+                        <input type="text" placeholder="street address" onChange={this.handleChange}></input>
+                    </form>
+                    <ul>
+                    { this.searchResults(this.state.searchTerm).map(site => {
+                        return <Card> {site.voter_entrance}, {site.city} - <strong>{site.site_name} </strong></Card>
+                        })
+                    }
+                    </ul>
+                    <ChatContainer>Chat</ChatContainer>
+                </Grid.Column>
+                <Grid.Column>
+                    <Sidebar sites={this.state.sites}>
+                        Sidebar
+                    </Sidebar>
+                </Grid.Column>
+            </Grid>
         )
     }
 }
