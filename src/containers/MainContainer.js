@@ -45,7 +45,7 @@ export class MainContainer extends Component {
                 </form>
                 <ul>
                 { this.searchResults(this.state.searchTerm).map(site => {
-                    return <li> {site.voter_entrance} - <strong>{site.site_name} </strong></li>
+                    return <li> {site.voter_entrance}, {site.city} - <strong>{site.site_name} </strong></li>
                     })
                 }
                 </ul>
