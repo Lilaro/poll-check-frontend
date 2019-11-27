@@ -24,7 +24,7 @@ export class App extends Component {
       token,
       userId,
       name
-    }, () => console.log('gotToken invoked', this.state.userId))
+    }, () => console.log('gotToken invoked', this.state.name))
   }
       
   render() {
@@ -35,7 +35,8 @@ export class App extends Component {
           <Route path='/login' render={(props) => <LoginContainer {...props} 
             gotToken={this.gotToken} />}/>
           <Route path='/home' render={(props) => <MainContainer  {...props} 
-            token={this.state.token} userId={this.state.userId}/> } />
+            token={this.state.token} userId={this.state.userId}
+            name={this.state.name}/> } />
           <Route exact path='/' render={(props) => <LoginContainer {...props} 
             gotToken={this.gotToken} />} />
         </Switch>

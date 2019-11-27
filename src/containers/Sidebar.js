@@ -9,7 +9,7 @@ export class Sidebar extends Component {
         
         return (
             <div>
-                Sidebar
+                Hi, {this.props.name}!
             </div>
         )
     }

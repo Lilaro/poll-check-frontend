@@ -54,7 +54,8 @@ export class MainContainer extends Component {
                     <ChatContainer>Chat</ChatContainer>
                 </Grid.Column>
                 <Grid.Column>
-                    <Sidebar sites={this.state.sites}>
+                    <Sidebar sites={this.state.sites} 
+                        name={this.props.name}>
                         Sidebar
                     </Sidebar>
                 </Grid.Column>
