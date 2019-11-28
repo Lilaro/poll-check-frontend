@@ -10,6 +10,11 @@ export class Sidebar extends Component {
         return (
             <div>
                 Hi, {this.props.name}!
+                <p>Chat channel 1</p>
+                <p>Chat channel 2</p>
+                <p>Chat channel 3</p>
+                {/* { ? :} */}
+                {/* //fetch with chat id to retrieve messages */}
             </div>
         )
     }

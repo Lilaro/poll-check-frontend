@@ -7,8 +7,9 @@ export class MainContainer extends Component {
 
     state = {
         sites: [],
-        searchTerm: "",
-        siteClicked: false
+        clickedId: {}
+        // searchTerm: "",
+        // siteClicked: false
     }
 
     componentDidMount() {
@@ -19,20 +20,11 @@ export class MainContainer extends Component {
         }))
     }
 
-    handleChange = (e) => {   
-        console.log(this.state.sites)
-        this.setState({
-            searchTerm: e.target.value,
-        }, () => this.searchResults(this.state.searchTerm))
+    handleSiteClick = (site) => {
+        this.setState({clickedId: site})
     }
-
-    handleSiteClick = (e) => {
-        e.preventDefault()
-        this.setState({
-            siteClicked: true
-        })
-
-    }
+    
+    
 
     render() {
         console.log(this.state.sites)
@@ -40,7 +32,8 @@ export class MainContainer extends Component {
         return (
             <Grid columns={2}>
                 <Grid.Column>
-                   <SiteContainer searchTerm={this.state.searchTerm}
+                   <SiteContainer
+                   token={this.props.token}
                    sites={this.state.sites}
                    siteClicked={this.state.siteClicked}
                    handleSiteClick={this.handleSiteClick}
@@ -48,7 +41,10 @@ export class MainContainer extends Component {
                 </Grid.Column>
                 <Grid.Column>
                     <Sidebar sites={this.state.sites} 
-                        name={this.props.name}>
+                        name={this.props.name}
+                        token={this.props.token}
+                        displayedSite={this.state.site}
+                    >
                         Sidebar
                     </Sidebar>
                 </Grid.Column>
