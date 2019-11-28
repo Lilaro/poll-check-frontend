@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import ChatContainer from './ChatContainer'
-import Site from '../components/Site'
+import Site from './Site'
 import {Card} from 'semantic-ui-react'
 
 export class SiteContainer extends Component {
 
     state = {
         searchTerm: "",
+        channels: [],
         siteClicked: false
     }
     
@@ -29,11 +29,13 @@ export class SiteContainer extends Component {
 
         handleSiteClick = (e) => {
             e.preventDefault()
-            console.log("hello")
-
-            this.setState({
+            fetch('http://localhost:3000/channels')
+            .then(resp => resp.json)
+            .then(data => {
+                this.setState({
+                channels: data,
                 siteClicked: !this.state.siteClicked
-            })
+            }, data => console.log(data))})
         }
 
         render() {
@@ -47,6 +49,7 @@ export class SiteContainer extends Component {
                     <ul>
                     { this.searchResults(this.state.searchTerm).map(site => {
                         return <Site  key={site.id} site={site} siteId={site.id}
+                            siteClicked={this.state.siteClicked}
                             handleSiteClick={this.handleSiteClick}>                           
                         </Site>
                         })
@@ -54,10 +57,7 @@ export class SiteContainer extends Component {
                     </ul>
                     :
                     null}
-                {this.state.siteClicked ?
-                    <ChatContainer token={this.props.token}>Chat Container</ChatContainer>
-                :
-                null}  
+            
             </div>
         )
     }

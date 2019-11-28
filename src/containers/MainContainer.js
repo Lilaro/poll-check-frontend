@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SiteContainer from './SiteContainer';
 import Sidebar from './Sidebar';
-import {Card, Grid} from 'semantic-ui-react'
+import {Grid} from 'semantic-ui-react'
 
 export class MainContainer extends Component {
 

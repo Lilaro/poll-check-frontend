@@ -28,15 +28,12 @@ export class ChatContainer extends Component {
     //     body: JSON.stringify({
     //         content: this.state.newMessage,
     //         user_id: this.props.loggedInUserId,
-    //         poll_site_id: this.props.
+    //         poll_site_id: this.props.site_id
     //     })
     //     })
     //     .then(resp => resp.json())
     //     .then(data => {
-    //         this.setState({
-    //             collections: [...this.state.collections, data],
-    //             collectionName: ''
-    //         })
+    //         console.log(data)
     //    })
     // }
 
