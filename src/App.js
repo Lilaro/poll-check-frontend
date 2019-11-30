@@ -4,6 +4,7 @@ import './App.css';
 import React, {Component} from 'react'
 import LoginContainer from './containers/LoginContainer'
 import MainContainer from './containers/MainContainer'
+import ChatContainer from './containers/ChatContainer'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 export class App extends Component {
@@ -36,6 +37,9 @@ export class App extends Component {
             gotToken={this.gotToken} />} />
           <Route path='/home' render={(props) => <MainContainer  {...props} 
             token={this.state.token} userId={this.state.userId}
+            name={this.state.name}/>} />
+          <Route path='/chat' render={(props) => <ChatContainer {...props}
+            gotToken={this.gotToken} userId={this.state.userId}
             name={this.state.name}/>} />
           <Route exact path='/' render={(props) => <LoginContainer {...props} 
             gotToken={this.gotToken} />} />

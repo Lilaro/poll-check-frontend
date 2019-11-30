@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import {Card, Button} from 'semantic-ui-react'
 import ChatContainer from './ChatContainer'
+import { withRouter } from 'react-router-dom'
 
-export default class Site extends Component {
+class Site extends Component {
     
     state = {
         siteClicked: false,
@@ -16,6 +17,7 @@ export default class Site extends Component {
             selectedSite: site,
             siteClicked: !this.state.siteClicked
         })
+        this.props.history.push('/chat')
     }
 
     render() { 
@@ -38,5 +40,5 @@ export default class Site extends Component {
     }
 }
 
-
+export default withRouter(Site)
 
