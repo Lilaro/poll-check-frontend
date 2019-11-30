@@ -6,8 +6,7 @@ export class SiteContainer extends Component {
 
     state = {
         searchTerm: "",
-        channels: [],
-        siteClicked: false
+       
     }
     
     searchResults = (searchWord) => {
@@ -27,17 +26,6 @@ export class SiteContainer extends Component {
             }, () => this.searchResults(this.state.searchTerm))
         }
 
-        handleSiteClick = (e) => {
-            e.preventDefault()
-            fetch('http://localhost:3000/channels')
-            .then(resp => resp.json)
-            .then(data => {
-                this.setState({
-                channels: data,
-                siteClicked: !this.state.siteClicked
-            }, data => console.log(data))})
-        }
-
         render() {
         return (
             <div>
@@ -48,9 +36,13 @@ export class SiteContainer extends Component {
                 {this.state.searchTerm !== "" ? 
                     <ul>
                     { this.searchResults(this.state.searchTerm).map(site => {
-                        return <Site  key={site.id} site={site} siteId={site.id}
-                            siteClicked={this.state.siteClicked}
-                            handleSiteClick={this.handleSiteClick}>                           
+                        return <Site  
+                            key={site.id} 
+                            site={site} 
+                            channels={this.props.channels}
+                            siteClicked={this.props.siteClicked}
+                            clickedSiteId={this.props.clickedSiteId}
+                            handleSiteClick={this.props.handleSiteClick}>                           
                         </Site>
                         })
                     } 

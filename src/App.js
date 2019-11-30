@@ -33,10 +33,10 @@ export class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route path='/login' render={(props) => <LoginContainer {...props} 
-            gotToken={this.gotToken} />}/>
+            gotToken={this.gotToken} />} />
           <Route path='/home' render={(props) => <MainContainer  {...props} 
             token={this.state.token} userId={this.state.userId}
-            name={this.state.name}/> } />
+            name={this.state.name}/>} />
           <Route exact path='/' render={(props) => <LoginContainer {...props} 
             gotToken={this.gotToken} />} />
         </Switch>

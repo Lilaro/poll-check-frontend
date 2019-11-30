@@ -28,7 +28,8 @@ export class ChatContainer extends Component {
     //     body: JSON.stringify({
     //         content: this.state.newMessage,
     //         user_id: this.props.loggedInUserId,
-    //         poll_site_id: this.props.site_id
+    //         poll_site_id: this.props.siteId,
+    //         channel_id: this.props.channelId
     //     })
     //     })
     //     .then(resp => resp.json())
