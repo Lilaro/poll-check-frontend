@@ -39,7 +39,7 @@ export class SiteContainer extends Component {
                         return <Site  
                             key={site.id} 
                             site={site} 
-                            channels={this.props.channels}
+                            channel={this.props.channel}
                             siteClicked={this.props.siteClicked}
                             clickedSiteId={this.props.clickedSiteId}
                             handleSiteClick={this.props.handleSiteClick}>                           

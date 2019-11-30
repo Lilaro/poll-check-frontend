@@ -8,9 +8,9 @@ export class MainContainer extends Component {
     state = {
         sites: [],
         filteredSites: [],
-        selectedSite: {},
-        channels: [],
-        siteClicked: false
+        // selectedSite: {},
+        channel: {},
+        // siteClicked: false
     }
 
     componentDidMount() {
@@ -35,8 +35,8 @@ export class MainContainer extends Component {
         .then(resp => resp.json())
         .then(data => {
           this.setState({
-           channels: data
-          }, console.log(data))
+           channel: data[2]
+          })
         })    
       }
 
@@ -46,18 +46,18 @@ export class MainContainer extends Component {
         }, console.log(this.state.filteredSites))
       }
 
-      handleSiteClick = (e, site) => {
-          e.preventDefault()
-          this.setState({
-              selectedSite: site,
-              siteClicked: !this.state.siteClicked
-          }, console.log(this.state.selectedSite)
-          )
-      }    
+    //   handleSiteClick = (e, site) => {
+    //       e.preventDefault()
+    //       this.setState({
+    //           selectedSite: site,
+    //           siteClicked: !this.state.siteClicked
+    //       }, console.log(this.state.selectedSite)
+    //       )
+    //   }    
 
     render() {
         console.log(this.state.sites)
-        // console.log(this.state.filteredSites)
+        // console.log(this.state.channel)
       
         return (
             <Grid columns={2}>
@@ -65,10 +65,9 @@ export class MainContainer extends Component {
                    <SiteContainer
                         token={this.props.token}
                         sites={this.state.sites}
-                        channels={this.state.channels}
+                        channel={this.state.channel}
                         siteClicked={this.state.siteClicked}
                         selectedSiteId={this.state.siteId}
-                        channels={this.state.channels}
                         handleSiteClick={this.handleSiteClick}
                         handleChange={this.handleChange}></SiteContainer>
                 </Grid.Column>
