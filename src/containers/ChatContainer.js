@@ -38,22 +38,21 @@ export class ChatContainer extends Component {
     //    })
     // }
 
-    filteredMessages = () => {
-        return this.props.messages.filter(message => message.poll_site_id === this.props.selectedSite.id)
-    }
+    // filteredMessages = () => {
+    //     return this.props.messages.filter(message => message.poll_site_id === this.props.selectedSite.id)
+    // }
 
     render() {
         console.log('current user', this.props.currentUser.id)
-        console.log('selectedSite', this.props.selectedSite.id)
+        console.log('selectedSite', this.props.selectedSite)
         console.log('channel', this.props.channel.id)
-        console.log('fmessages', this.filteredMessages());
+        // console.log('fmessages', this.filteredMessages());
         
         
         return (
             <div>
                 Chat Container
-                <ChatList>
-                    {/* {this.props.messages.filter(message => message.poll_site_id === this.props.site.id)} */}
+                <ChatList selectedSite={this.props.selectedSite}>
                 </ChatList>
                 <ChatForm newMessage={this.props.newMessage}
                     handleChange={this.handleChange}

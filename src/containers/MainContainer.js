@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import pollData from '../data/poll-sites';
+// import pollData from '../data/poll-sites';
 import SiteContainer from './SiteContainer';
+import ChatContainer from './ChatContainer'
 import Sidebar from './Sidebar';
 import {Grid} from 'semantic-ui-react'
 
@@ -13,6 +14,20 @@ export class MainContainer extends Component {
     console.log('messages', this.props.messages)
     console.log('channel', this.props.channel)
         return (
+            // {this.props.siteClicked ? 
+            //     <ChatContainer
+            //         channel={this.props.channel}
+            //         site={this.props.site}
+            //         messages={this.props.messages}
+            //         newMessage={this.props.newMessage}
+            //         name={this.props.name}
+            //         userId={this.props.userId}
+            //         selectedSite={this.props.selectedSite}
+            //         currentUser={this.props.currentUser}
+            //         submitMessage={this.props.submitMessage}
+            //         messageChange={this.props.messageChange}>
+            //     </ChatContainer>
+            //     :
             <Grid columns={2}>
                 <Grid.Column width={3}>
                    <SiteContainer
@@ -50,6 +65,7 @@ export class MainContainer extends Component {
                     </Sidebar>
                 </Grid.Column>
             </Grid>
+    // }
         )
     }
 }
