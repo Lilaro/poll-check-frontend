@@ -27,6 +27,7 @@ export default function App(props) {
          <Marker key={site.id} latitude={parseFloat(site.latitude)} longitude={parseFloat(site.longitude)}>
             <button
               className="marker-btn"
+              onClick={(e) => props.handleSiteClick(e, props.site)}
             >
               <img src="../ballot-box.svg" alt="Ballot Box Icon" />
             </button>

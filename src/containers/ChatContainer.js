@@ -4,56 +4,61 @@ import ChatForm from '../components/ChatForm'
 
 export class ChatContainer extends Component {
 
-    state = {
-        newMessage: ""
-    }
+    // state = {
+    //     newMessage: ""
+    // }
 
+    // handleChange = (e) => {
+    //     this.setState({
+    //         newMessage: e.target.value
+    //     }, () => console.log(this.state.newMessage)
+    //     )
+    // }
 
-    handleChange = (e) => {
-        this.setState({
-            newMessage: e.target.value
-        }, () => console.log(this.state.newMessage)
-        )
-    }
-
-    handleSubmit = (e) => {
-      e.preventDefault()
+    // handleSubmit = (e) => {
+    //   e.preventDefault()
     
-      fetch('http://localhost:3000/messages', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'Authorization': `Bearer ${localStorage.token}`
-        },
-        body: JSON.stringify({
-            content: this.state.newMessage,
-            user_id: this.props.userId,
-            poll_site_id: this.props.site.siteId,
-            channel_id: this.props.channel.channelId
-        })
-        })
-        .then(resp => resp.json())
-        .then(data => {
-            console.log(data)
-       })
+    //   fetch('http://localhost:3000/messages', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //         'Accept': 'application/json',
+    //         'Authorization': `Bearer ${localStorage.token}`
+    //     },
+    //     body: JSON.stringify({
+    //         content: this.state.newMessage,
+    //         user_id: this.props.currentUser.id,
+    //         poll_site_id: this.props.selectedSite.id,
+    //         channel_id: this.props.channel.id
+    //     })
+    //     })
+    //     .then(resp => resp.json())
+    //     .then(data => {
+    //         console.log(data)
+    //    })
+    // }
+
+    filteredMessages = () => {
+        return this.props.messages.filter(message => message.poll_site_id === this.props.selectedSite.id)
     }
 
     render() {
-        console.log('userId', this.props.userId)
-        console.log('site', this.props.site)
-        console.log('channel', this.props.channelId)
+        console.log('current user', this.props.currentUser.id)
+        console.log('selectedSite', this.props.selectedSite.id)
+        console.log('channel', this.props.channel.id)
+        console.log('fmessages', this.filteredMessages());
+        
         
         return (
             <div>
                 Chat Container
                 <ChatList>
-                    
                     {/* {this.props.messages.filter(message => message.poll_site_id === this.props.site.id)} */}
                 </ChatList>
-                <ChatForm newMessage={this.state.newMessage}
-                handleChange={this.handleChange}
-                handleSubmit={this.handleSubmit}
+                <ChatForm newMessage={this.props.newMessage}
+                    handleChange={this.handleChange}
+                    submitMessage={this.props.submitMessage}
+                    messageChange={this.props.messageChange}
                 ></ChatForm>
             </div>
         )

@@ -42,7 +42,10 @@ export class SiteContainer extends Component {
                             name={this.props.name}
                             userId={this.props.userId}
                             channel={this.props.channel}
-                            messages={this.props.messages}>                           
+                            messages={this.props.messages}
+                            siteClicked={this.props.siteClicked}
+                            selectedSite={this.props.selectedSite}
+                            handleSiteClick={this.props.handleSiteClick}>                           
                         </Site>
                         })
                     } 

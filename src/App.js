@@ -16,7 +16,11 @@ export class App extends Component {
     name: null,
     sites: [],
     messages: [],
+    newMessage: '',
     channel: {},
+    siteClicked: false,
+    selectedSite: {},
+    currentUser: {}
   }
 
   componentDidMount() {
@@ -57,7 +61,10 @@ fetchChannels = () => {
       headers: {'Authorization': `Bearer ${localStorage.token}`}
     })
     .then(resp => resp.json())
-    .then(data => console.log(data))
+    .then(data => this.setState({
+      currentUser: data
+    }, () => console.log('current user', this.state.currentUser)
+    ))
   }
 
   gotToken = (token, userId, name) => {
@@ -71,14 +78,54 @@ fetchChannels = () => {
       name
     }, () => console.log('gotToken invoked', this.state.name))
   }
+
+  handleSiteClick = (e, site) => {
+    e.preventDefault()
+    this.setState({
+        selectedSite: site,
+        siteClicked: !this.state.siteClicked
+    }, () => console.log('site clicked', this.state.siteClicked)
+    )
+    // this.props.history.push('/chat')
+  }
+
+  submitMessage = (e) => {
+    e.preventDefault()
+  
+    fetch('http://localhost:3000/messages', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${localStorage.token}`
+      },
+      body: JSON.stringify({
+          content: this.state.newMessage,
+          user_id: this.state.currentUser.id,
+          poll_site_id: this.state.selectedSite.id,
+          channel_id: this.state.channel.id
+      })
+      })
+      .then(resp => resp.json())
+      .then(data => this.setState({
+        messages: [...this.state.messages, data],
+        newMessage: ''
+      }))
+  }
+
+  messageChange = (e) => {
+    this.setState({
+        newMessage: e.target.value
+    }, () => console.log(this.state.newMessage)
+    )
+  }
+
       
   render() {
     console.log(this.state.sites)
     console.log('messages', this.state.messages)
     console.log('channel', this.state.channel);
-    
-    
-    
+  
     return (
       <>
       <BrowserRouter>
@@ -91,12 +138,19 @@ fetchChannels = () => {
             name={this.state.name}
             sites={this.state.sites}
             messages={this.state.messages}
-            channel={this.state.channel} />}/>
-          <Route path='/chat' render={(props) => <ChatContainer {...props}
+            newMessage={this.state.newMessage}
+            channel={this.state.channel}
+            siteClicked={this.state.siteClicked}
+            selectedSite={this.state.selectedSite}
+            handleSiteClick={this.handleSiteClick}
+            currentUser={this.state.currentUser}
+            submitMessage={this.submitMessage} 
+            messageChange={this.messageChange}/>}/>
+          {/* <Route path='/chat' render={(props) => <ChatContainer {...props}
             gotToken={this.gotToken}
             token={this.state.token}
             userId={this.state.userId}
-            name={this.state.name}/>} />
+            name={this.state.name}/>} /> */}
           <Route exact path='/' render={(props) => <LoginContainer {...props} 
             gotToken={this.gotToken} />} />
         </Switch>

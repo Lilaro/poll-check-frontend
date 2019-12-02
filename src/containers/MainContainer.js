@@ -6,63 +6,9 @@ import {Grid} from 'semantic-ui-react'
 
 export class MainContainer extends Component {
 
-    // state = {
-    //     sites: [],
-    //     messages: [],
-    //     channel: {},
-
-    // }
-
-    // componentDidMount() {
-    //     fetch('http://localhost:3000/poll_sites')
-    //     .then(resp => resp.json())
-    //     .then(data => this.setState({
-    //         sites: data
-    //     }));
-    //     this.fetchChannels() 
-    //     this.fetchMessages()   
-    // }
-
-    // fetchChannels = () => {
-    //     fetch('http://localhost:3000/channels', {
-    //     //   headers: {
-    //     //     'Authorization': `Bearer ${this.props.token}`
-    //     //   }
-    //     })
-    //     .then(resp => resp.json())
-    //     .then(data => {
-    //       this.setState({
-    //        channel: data[2]
-    //       })
-    //     })    
-    //   }
-
-    //   fetchMessages = () => {
-    //     fetch('http://localhost:3000/messages')
-    //     .then(resp => resp.json())
-    //     .then(data => this.setState({
-    //         messages: data
-    //     }, () => console.log(this.state.messages)))
-    //   }
-
-    //   filterSites = () => {
-    //     let filtered = this.state.sites.filter(site => site.latitude && site.longitude)
-    //     this.setState({
-    //         filteredSites: filtered
-    //     }, console.log(this.state.filteredSites))
-    //   }
-
-    //   handleSiteClick = (e, site) => {
-    //       e.preventDefault()
-    //       this.setState({
-    //           selectedSite: site,
-    //           siteClicked: !this.state.siteClicked
-    //       }, console.log(this.state.selectedSite)
-    //       )
-    //   }    
 
     render() {
-       console.log('sites', this.props.sites)
+    //    console.log('sites', this.props.sites)
     
     console.log('messages', this.props.messages)
     console.log('channel', this.props.channel)
@@ -72,10 +18,17 @@ export class MainContainer extends Component {
                    <SiteContainer
                         token={this.props.token}
                         sites={this.props.sites}
-                        channel={this.props.channel}
                         name={this.props.name}
+                        channel={this.props.channel}
                         userId={this.props.userId}
-                        messages={this.props.messages}>
+                        messages={this.props.messages}
+                        newMessage={this.props.newMessage}
+                        siteClicked={this.props.siteClicked}
+                        selectedSite={this.props.selectedSite}
+                        handleSiteClick={this.props.handleSiteClick}
+                        currentUser={this.props.currentUser}
+                        submitMessage={this.props.submitMessage}
+                        >
                     </SiteContainer>
                 </Grid.Column>
                 <Grid.Column width={10}>
@@ -83,7 +36,17 @@ export class MainContainer extends Component {
                         sites={this.props.sites} 
                         name={this.props.name}
                         token={this.props.token}
-                        displayedSite={this.props.site}>
+                        channel={this.props.channel}
+                        userId={this.props.userId}
+                        messages={this.props.messages}
+                        displayedSite={this.props.site}
+                        siteClicked={this.props.siteClicked}
+                        selectedSite={this.props.selectedSite}
+                        handleSiteClick={this.props.handleSiteClick}
+                        currentUser={this.props.currentUser}
+                        submitMessage={this.props.submitMessage}
+                        messageChange={this.props.messageChange}
+                        >
                     </Sidebar>
                 </Grid.Column>
             </Grid>
