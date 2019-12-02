@@ -1,14 +1,7 @@
 import React, {Component} from 'react';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Message,
-  Segment,
-} from 'semantic-ui-react'
+import {Grid} from 'semantic-ui-react'
 
 export default class LoginContainer extends Component {
 
@@ -39,7 +32,7 @@ export default class LoginContainer extends Component {
         console.log(data)
             if (data.errors) {
             this.setState({
-                errors: data.message
+              errors: data.message
             })
             } else {
             this.props.gotToken(data.token, data.user.id, data.user.name)

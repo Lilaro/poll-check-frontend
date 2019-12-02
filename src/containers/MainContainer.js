@@ -14,17 +14,21 @@ export class MainContainer extends Component {
     }
 
     componentDidMount() {
-        this.fetchSites()
-        this.fetchChannels()    
-    }
-
-    fetchSites = () => {
         fetch('http://localhost:3000/poll_sites')
         .then(resp => resp.json())
         .then(data => this.setState({
             sites: data
-        }))
+        }));
+        this.fetchChannels()    
     }
+
+    // fetchSites = () => {
+    //     fetch('http://localhost:3000/poll_sites')
+    //     .then(resp => resp.json())
+    //     .then(data => this.setState({
+    //         sites: data
+    //     }))
+    // }
 
     fetchChannels = () => {
         fetch('http://localhost:3000/channels', {
@@ -61,7 +65,7 @@ export class MainContainer extends Component {
       
         return (
             <Grid columns={2}>
-                <Grid.Column>
+                <Grid.Column width={3}>
                    <SiteContainer
                         token={this.props.token}
                         sites={this.state.sites}
@@ -71,7 +75,7 @@ export class MainContainer extends Component {
                         handleSiteClick={this.handleSiteClick}
                         handleChange={this.handleChange}></SiteContainer>
                 </Grid.Column>
-                <Grid.Column>
+                <Grid.Column width={10}>
                     <Sidebar 
                         sites={this.state.sites} 
                         name={this.props.name}

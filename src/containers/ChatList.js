@@ -4,11 +4,12 @@ export class ChatList extends Component {
     render() {
         return (
           <div>
-            <ul>
-              Message
-              Message
-              Message
-            </ul>  
+            
+            <p>Message</p>
+            <p>Message</p>
+            <p>Message</p>
+            <p>Message</p>
+            
           </div>
         )
     }

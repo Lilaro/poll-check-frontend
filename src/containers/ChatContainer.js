@@ -23,11 +23,11 @@ export class ChatContainer extends Component {
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'Authorization': `Bearer ${this.props.token}`
+            'Authorization': `Bearer ${localStorage.token}`
         },
         body: JSON.stringify({
             content: this.state.newMessage,
-            user_id: this.props.loggedInUserId,
+            user_id: localStorage.userId,
             poll_site_id: this.props.site.siteId,
             channel_id: this.props.channel.channelId
         })
@@ -39,6 +39,7 @@ export class ChatContainer extends Component {
     }
 
     render() {
+        console.log(this.props.site)
         return (
             <div channelId={this.props.channelId} siteId={this.props.siteId}>
                 Chat Container

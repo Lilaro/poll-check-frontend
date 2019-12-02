@@ -39,7 +39,8 @@ export class App extends Component {
             token={this.state.token} userId={this.state.userId}
             name={this.state.name}/>} />
           <Route path='/chat' render={(props) => <ChatContainer {...props}
-            gotToken={this.gotToken} userId={this.state.userId}
+            gotToken={this.gotToken}
+            token={this.state.token} userId={this.state.userId}
             name={this.state.name}/>} />
           <Route exact path='/' render={(props) => <LoginContainer {...props} 
             gotToken={this.gotToken} />} />
