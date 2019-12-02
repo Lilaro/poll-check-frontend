@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
-import {Grid} from 'semantic-ui-react'
+import {Grid} from 'semantic-ui-react';
+import { withRouter } from 'react-router-dom'
 
-export default class LoginContainer extends Component {
+class LoginContainer extends Component {
 
     state = {
         signupName: '',
@@ -100,6 +101,7 @@ export default class LoginContainer extends Component {
         )
     }
 }
+export default withRouter(LoginContainer)
 
 {/* <Grid centered columns={2}>
     <Grid.Column>

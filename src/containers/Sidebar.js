@@ -6,19 +6,12 @@ export class Sidebar extends Component {
 
 
     render() {
+        console.log('sites', this.props.sites);
         
         return (
             <>
-                <Map sites={this.props.sites}></Map>
+               <Map sites={this.props.sites}></Map>
             </>
-            // <div>
-            //     Hi, {this.props.name}!
-            //     <p>Chat channel 1</p>
-            //     <p>Chat channel 2</p>
-            //     <p>Chat channel 3</p>
-            //     {/* { ? :} */}
-            //     {/* //fetch with chat id to retrieve messages */}
-            // </div>
         )
     }
 }

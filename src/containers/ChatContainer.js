@@ -8,6 +8,7 @@ export class ChatContainer extends Component {
         newMessage: ""
     }
 
+
     handleChange = (e) => {
         this.setState({
             newMessage: e.target.value
@@ -27,7 +28,7 @@ export class ChatContainer extends Component {
         },
         body: JSON.stringify({
             content: this.state.newMessage,
-            user_id: localStorage.userId,
+            user_id: this.props.userId,
             poll_site_id: this.props.site.siteId,
             channel_id: this.props.channel.channelId
         })
@@ -39,11 +40,17 @@ export class ChatContainer extends Component {
     }
 
     render() {
-        console.log(this.props.site)
+        console.log('userId', this.props.userId)
+        console.log('site', this.props.site)
+        console.log('channel', this.props.channelId)
+        
         return (
-            <div channelId={this.props.channelId} siteId={this.props.siteId}>
+            <div>
                 Chat Container
-                <ChatList></ChatList>
+                <ChatList>
+                    
+                    {/* {this.props.messages.filter(message => message.poll_site_id === this.props.site.id)} */}
+                </ChatList>
                 <ChatForm newMessage={this.state.newMessage}
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}

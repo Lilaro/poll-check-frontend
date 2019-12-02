@@ -1,6 +1,5 @@
 import ReactMapGL, {Marker} from 'react-map-gl'
 import React, {useState } from 'react'
-import pollData from '../data/poll-sites.json'
 import Site from '../containers/Site'
 
 export default function App(props) {
@@ -13,7 +12,6 @@ export default function App(props) {
     zoom: 10
   })
 
-  console.log(pollData)
     return (
       <> 
         <ReactMapGL {...viewport}
@@ -25,11 +23,13 @@ export default function App(props) {
         }
         > 
     
-        {pollData.map((site) => (
+        {props.sites.map((site) => (
          <Marker key={site.id} latitude={parseFloat(site.latitude)} longitude={parseFloat(site.longitude)}>
-           <div>
-            Poll Site
-           </div>
+            <button
+              className="marker-btn"
+            >
+              <img src="../ballot-box.svg" alt="Ballot Box Icon" />
+            </button>
          </Marker>
        ))}
        </ReactMapGL>

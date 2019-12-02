@@ -1,5 +1,6 @@
 [
     {
+      "id": 13001,  
       "site_status": "A",
       "site_name": "PS 64 Pura Belpre",
       "site_number": "X0035",
@@ -13,6 +14,7 @@
       "longitude": "-73.915643"
     },
     {
+        "id": 13002,
         "borough": "QUEENS",
         "site_status": "A",
         "site_name": "PS 201-Discovery School for Inquiry & Research",

@@ -32,11 +32,18 @@ class Site extends Component {
                 <strong>{this.props.site.site_name}</strong>
                 <Button>Chat</Button>
                 </Card>
-                {this.state.siteClicked ?
-                    <ChatContainer channelId={this.props.channel.id} site={this.props.site}></ChatContainer>
+                {/* {this.state.siteClicked ?
+                    <ChatContainer 
+                    //this is where props get lost??
+                        channelId={this.props.channel.id}
+                        site={this.props.site}
+                        messages={this.props.messages}
+                        name={this.props.name}
+                        userId={this.props.userId}>
+                    </ChatContainer>
                     :
                     null
-                }
+                } */}
             </>
             )
     }

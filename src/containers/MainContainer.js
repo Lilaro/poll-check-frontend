@@ -1,54 +1,56 @@
 import React, { Component } from 'react';
+import pollData from '../data/poll-sites';
 import SiteContainer from './SiteContainer';
 import Sidebar from './Sidebar';
 import {Grid} from 'semantic-ui-react'
 
 export class MainContainer extends Component {
 
-    state = {
-        sites: [],
-        filteredSites: [],
-        // selectedSite: {},
-        channel: {},
-        // siteClicked: false
-    }
+    // state = {
+    //     sites: [],
+    //     messages: [],
+    //     channel: {},
 
-    componentDidMount() {
-        fetch('http://localhost:3000/poll_sites')
-        .then(resp => resp.json())
-        .then(data => this.setState({
-            sites: data
-        }));
-        this.fetchChannels()    
-    }
+    // }
 
-    // fetchSites = () => {
+    // componentDidMount() {
     //     fetch('http://localhost:3000/poll_sites')
     //     .then(resp => resp.json())
     //     .then(data => this.setState({
     //         sites: data
-    //     }))
+    //     }));
+    //     this.fetchChannels() 
+    //     this.fetchMessages()   
     // }
 
-    fetchChannels = () => {
-        fetch('http://localhost:3000/channels', {
-        //   headers: {
-        //     'Authorization': `Bearer ${this.props.token}`
-        //   }
-        })
-        .then(resp => resp.json())
-        .then(data => {
-          this.setState({
-           channel: data[2]
-          })
-        })    
-      }
+    // fetchChannels = () => {
+    //     fetch('http://localhost:3000/channels', {
+    //     //   headers: {
+    //     //     'Authorization': `Bearer ${this.props.token}`
+    //     //   }
+    //     })
+    //     .then(resp => resp.json())
+    //     .then(data => {
+    //       this.setState({
+    //        channel: data[2]
+    //       })
+    //     })    
+    //   }
 
-      filterSites = () => {
-        this.setState({
-            filteredSites: this.state.sites.filter(site => site.latitude && site.longitude)
-        }, console.log(this.state.filteredSites))
-      }
+    //   fetchMessages = () => {
+    //     fetch('http://localhost:3000/messages')
+    //     .then(resp => resp.json())
+    //     .then(data => this.setState({
+    //         messages: data
+    //     }, () => console.log(this.state.messages)))
+    //   }
+
+    //   filterSites = () => {
+    //     let filtered = this.state.sites.filter(site => site.latitude && site.longitude)
+    //     this.setState({
+    //         filteredSites: filtered
+    //     }, console.log(this.state.filteredSites))
+    //   }
 
     //   handleSiteClick = (e, site) => {
     //       e.preventDefault()
@@ -60,29 +62,28 @@ export class MainContainer extends Component {
     //   }    
 
     render() {
-        console.log(this.state.sites)
-        // console.log(this.state.channel)
-      
+       console.log('sites', this.props.sites)
+    
+    console.log('messages', this.props.messages)
+    console.log('channel', this.props.channel)
         return (
             <Grid columns={2}>
                 <Grid.Column width={3}>
                    <SiteContainer
                         token={this.props.token}
-                        sites={this.state.sites}
-                        channel={this.state.channel}
-                        siteClicked={this.state.siteClicked}
-                        selectedSiteId={this.state.siteId}
-                        handleSiteClick={this.handleSiteClick}
-                        handleChange={this.handleChange}></SiteContainer>
+                        sites={this.props.sites}
+                        channel={this.props.channel}
+                        name={this.props.name}
+                        userId={this.props.userId}
+                        messages={this.props.messages}>
+                    </SiteContainer>
                 </Grid.Column>
                 <Grid.Column width={10}>
                     <Sidebar 
-                        sites={this.state.sites} 
+                        sites={this.props.sites} 
                         name={this.props.name}
                         token={this.props.token}
-                        displayedSite={this.state.site}
-                    >
-                        Sidebar
+                        displayedSite={this.props.site}>
                     </Sidebar>
                 </Grid.Column>
             </Grid>
