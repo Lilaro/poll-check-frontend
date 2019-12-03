@@ -38,15 +38,21 @@ export class SiteContainer extends Component {
             e.preventDefault()
             
             this.props.handleLogout()
-            // this.props.history.push('/login')
-          }
+            this.props.history.push('/login')
+        }
+
+        profileClicked = (e) => {
+            e.preventDefault()
+            this.props.history.push('/profile')
+        }
 
         render() {
         return (
             <div>
               <h3 style={{float: 'left'}}>Find a poll site!</h3>
                 <Form>
-                <Button style={{float: 'right'}} content='edit account'/>
+                <Button style={{float: 'right'}} content='edit account'
+                    onClick={this.profileClicked}/>
                 <Button style={{float: 'right'}} content='logout'
                     onClick={this.logoutClicked}/>
                     <input type="text" placeholder="street address" onChange={this.handleChange}></input>

@@ -53,6 +53,7 @@ export class MainContainer extends Component {
                     submitMessage={this.props.submitMessage}
                     setSelectedSite={this.props.setSelectedSite}
                     handleLogout={this.props.handleLogout}
+                    handleProfileClick={this.props.handleProfileClick}
 
                 /> } /> 
                 </Grid.Column>
