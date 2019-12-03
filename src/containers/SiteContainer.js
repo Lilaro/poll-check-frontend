@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
 import Site from './Site'
-import {Card} from 'semantic-ui-react'
+import {Card, Form, Button} from 'semantic-ui-react'
 
 export class SiteContainer extends Component {
 
     state = {
         searchTerm: "",
-       
+        // siteClicked: false,
+        // selectedSite: {},
     }
+
+    handleSiteClick = (e, site) => {
+        e.preventDefault()
+        this.props.setSelectedSite(site)
+        // debugger
+        this.props.history.push('/chat')
+      }
     
     searchResults = (searchWord) => {
         // debugger
@@ -26,32 +34,45 @@ export class SiteContainer extends Component {
             }, () => this.searchResults(this.state.searchTerm))
         }
 
+        logoutClicked = (e) => {
+            e.preventDefault()
+            
+            this.props.handleLogout()
+            // this.props.history.push('/login')
+          }
+
         render() {
         return (
             <div>
-              Find your poll site
-                <form>
+              <h3 style={{float: 'left'}}>Find a poll site!</h3>
+                <Form>
+                <Button style={{float: 'right'}} content='edit account'/>
+                <Button style={{float: 'right'}} content='logout'
+                    onClick={this.logoutClicked}/>
                     <input type="text" placeholder="street address" onChange={this.handleChange}></input>
-                </form>
-                {this.state.searchTerm !== "" ? 
+                </Form>
+                {/* {this.state.searchTerm !== "" ? 
+                <> */}
                     <ul>
                     { this.searchResults(this.state.searchTerm).map(site => {
                         return <Site  
-                            key={site.id} 
-                            site={site} 
-                            name={this.props.name}
-                            userId={this.props.userId}
-                            channel={this.props.channel}
-                            messages={this.props.messages}
-                            siteClicked={this.props.siteClicked}
-                            selectedSite={this.props.selectedSite}
-                            handleSiteClick={this.props.handleSiteClick}>                           
+                        key={site.id} 
+                        site={site} 
+                        // name={this.props.name}
+                        // userId={this.props.userId}
+                        channel={this.props.channel}
+                        messages={this.props.messages}
+                        siteClicked={this.props.siteClicked}
+                        selectedSite={this.props.selectedSite}
+                        handleSiteClick={this.handleSiteClick}>                           
                         </Site>
                         })
                     } 
                     </ul>
+                    
+                    {/* </>
                     :
-                    null}
+                    null} */}
             
             </div>
         )

@@ -11,7 +11,7 @@ export class Sidebar extends Component {
         
         return (
             <>
-            {this.props.siteClicked ?
+            {/* {this.props.siteClicked ?
                 <ChatContainer
                     channel={this.props.channel}
                     site={this.props.site}
@@ -24,7 +24,7 @@ export class Sidebar extends Component {
                     submitMessage={this.props.submitMessage}
                     messageChange={this.props.messageChange}>
                 </ChatContainer>
-                :
+                : */}
                <Map sites={this.props.sites}
                     channel={this.props.channel}
                     site={this.props.site}
@@ -34,7 +34,7 @@ export class Sidebar extends Component {
                     selectedSite={this.props.selectedSite}
                     currentUser={this.props.currentUser}
                     handleSiteClick={this.props.handleSiteClick}></Map>
-            }
+    {/* } */}
             </>
         )
     }

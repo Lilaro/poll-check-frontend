@@ -36,7 +36,9 @@ class LoginContainer extends Component {
               errors: data.message
             })
             } else {
-            this.props.gotToken(data.token, data.user.id, data.user.name)
+            // this.props.gotToken(data.token, data.user.id, data.user.name)
+            localStorage.setItem("token", data.token)
+            this.props.fetchCurrentUser()
             this.props.history.push('/home')
             }
         })
@@ -79,7 +81,7 @@ class LoginContainer extends Component {
 
     render(){
         return (
-        <Grid>
+        <Grid centered columns={2}>
           <Grid.Column>
             <Login 
                 loginEmail={this.state.loginEmail}

@@ -1,16 +1,17 @@
 import React from 'react'
+import {Form} from 'semantic-ui-react'
 
 export default function ChatForm(props) {
     return (
         <div>
                 
-            <form onSubmit={props.submitMessage}>
+            <Form onSubmit={props.submitMessage}>
                 <input type="text" placeholder="send a message"
                 onChange={props.messageChange}
                 >
                 </input>
                
-            </form>
+            </Form>
         </div>
     )
 }
