@@ -6,17 +6,14 @@ export class SiteContainer extends Component {
 
     state = {
         searchTerm: "",
-        // siteClicked: false,
-        // selectedSite: {},
     }
 
     handleSiteClick = (e, site) => {
         e.preventDefault()
         console.log(site.id)
+
         this.props.setSelectedSite(site)
-       
-        this.props.history.push(`/chat/${site.id}`)
-        
+        this.props.history.push(`/chat/${site.id}`)   
       }
     
     searchResults = (searchWord) => {
@@ -30,7 +27,6 @@ export class SiteContainer extends Component {
         }
         
         handleChange = (e) => {   
-            console.log(this.props.sites)
             this.setState({
                 searchTerm: e.target.value,
             }, () => this.searchResults(this.state.searchTerm))
@@ -59,8 +55,8 @@ export class SiteContainer extends Component {
                     onClick={this.logoutClicked}/>
                 </Form>
                 <Form.Input type="text" placeholder="street address" onChange={this.handleChange}/>
-                {/* {this.state.searchTerm !== "" ? 
-                <> */}
+                {this.state.searchTerm !== "" ? 
+                <>
                     <ul>
                     { this.searchResults(this.state.searchTerm).map(site => {
                         return <Site  
@@ -78,9 +74,9 @@ export class SiteContainer extends Component {
                     } 
                     </ul>
                     
-                    {/* </>
+                    </>
                     :
-                    null} */}
+                    null}
             
             </div>
         )

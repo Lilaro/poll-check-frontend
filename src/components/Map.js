@@ -1,5 +1,5 @@
-import ReactMapGL, {Marker} from 'react-map-gl'
-import React, {useState } from 'react'
+import ReactMapGL, {Marker, Popup} from 'react-map-gl'
+import React, {useState, useEffect } from 'react'
 import Site from '../containers/Site'
 
 export default function App(props) {
@@ -11,6 +11,21 @@ export default function App(props) {
     height: "100vh",
     zoom: 10
   })
+
+  const [selectedSite, handleSiteClick] = useState(null);
+
+  useEffect(() => {
+    const listener = e => {
+      if (e.key === "Escape") {
+        handleSiteClick(null);
+      }
+    };
+    window.addEventListener("keydown", listener);
+
+    return () => {
+      window.removeEventListener("keydown", listener);
+    };
+  }, []);
 
     return (
       <> 
@@ -26,13 +41,31 @@ export default function App(props) {
         {props.sites.map((site) => (
          <Marker key={site.id} latitude={parseFloat(site.latitude)} longitude={parseFloat(site.longitude)}>
             <button
-              className="marker-btn"
-              onClick={(e) => props.handleSiteClick(e, props.site)}
+              className="marker-button"
+              onClick={(e) => handleSiteClick(site)}
             >
               <img src="../ballot-box.svg" alt="Ballot Box Icon" />
             </button>
          </Marker>
        ))}
+       {selectedSite ? (
+          <Popup
+            latitude={parseFloat(selectedSite.latitude)}
+            longitude={parseFloat(selectedSite.longitude)}
+            onClose={() => {
+              handleSiteClick(null);
+            }}
+          >
+            <div>
+              Poll Site
+              <h2>{selectedSite.site_name}</h2>
+              {/* <p>{selectedSite.voter_entrance}</p> */}
+          <p>{selectedSite.street_number + ' ' + selectedSite.street_name + ' ' + selectedSite.borough}</p>
+              <strong>Accessible Entrance:</strong>
+              <p>{selectedSite.handicap_entrance}</p>
+            </div>
+          </Popup>
+        ) : null}
        </ReactMapGL>
       </>
     )
