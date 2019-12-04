@@ -53,7 +53,8 @@ export class ChatContainer extends Component {
             <div>
                 <h2>{this.props.selectedSite.site_name}</h2>
                 {/* <ChatList selectedSite={this.props.selectedSite}></ChatList> */}
-                <ChatList selectedSite={this.props.selectedSite} />
+                <ChatList selectedSite={this.props.selectedSite}
+                    messages={this.props.messages} />
                 <ChatForm newMessage={this.props.newMessage}
                     handleChange={this.handleChange}
                     submitMessage={this.props.submitMessage}

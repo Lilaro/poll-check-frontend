@@ -66,7 +66,6 @@ class LoginContainer extends Component {
           errors: data.errors
         })
       } else {
-        this.props.gotToken(data.token, data.user.id, data.user.name)
         this.props.history.push('/home')
       }
     })

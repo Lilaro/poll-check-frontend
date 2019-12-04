@@ -2,6 +2,20 @@ import React, { Component } from 'react'
 import {Form} from 'semantic-ui-react'
 
 export default class Profile extends Component {
+
+    handleDeleteUser = () => {
+        fetch(`http://localhost:3000/users/${this.props.currentUser.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${localStorage.token}`
+      }
+    })
+    localStorage.clear()
+    this.props.history.push('/login')  
+    }
+
     render() {
         console.log(this.props.currentUser);
         
@@ -33,8 +47,11 @@ export default class Profile extends Component {
                             onChange={this.props.handleEditChange}
                         />
                     <Form.Button style={{margin: '10px'}} content="update account" type="submit" value="sign Up"/>
-                    <Form.Button style={{margin: '10px'}} content="delete account" value="delete account"/>
+                    <Form.Button style={{margin: '10px'}} content="delete account" value="delete account"
+                        onClick={this.handleDeleteUser}/>
                 </Form> 
+                {/* <Form>
+                </Form> */}
             </div>
         )
     }
