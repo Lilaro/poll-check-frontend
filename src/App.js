@@ -27,7 +27,8 @@ export class App extends Component {
   setSelectedSite = (site) => {
     this.setState({
       siteClicked: !this.state.siteClicked,
-      selectedSite: site
+      selectedSite: site,
+      messages: site.messages
     })
   }
 
@@ -35,10 +36,11 @@ export class App extends Component {
     fetch('http://localhost:3000/poll_sites')
     .then(resp => resp.json())
     .then(data => this.setState({
-        sites: data
+        sites: data,
+    
     }));
     this.fetchChannels() 
-    this.fetchMessages() 
+    // this.fetchMessages() 
     this.fetchCurrentUser()  
 }
 
@@ -56,13 +58,13 @@ fetchChannels = () => {
     })    
   }
 
-  fetchMessages = () => {
-    fetch('http://localhost:3000/messages')
-    .then(resp => resp.json())
-    .then(data => this.setState({
-        messages: data
-    }, () => console.log(this.state.messages)))
-  }
+  // fetchMessages = () => {
+  //   fetch('http://localhost:3000/messages')
+  //   .then(resp => resp.json())
+  //   .then(data => this.setState({
+  //       messages: data
+  //   }, () => console.log(this.state.messages)))
+  // }
 
    fetchCurrentUser = () => {
     fetch('http://localhost:3000/profile', {
@@ -75,14 +77,15 @@ fetchChannels = () => {
     ))
   }
 
-  setCurrentUser = (user) => {
-    this.setState({
-      currentUser: user
-    })
-  }
+  // setCurrentUser = (user) => {
+  //   this.setState({
+  //     currentUser: user
+  //   })
+  // }
 
   submitMessage = (e) => {
     e.preventDefault()
+    e.persist()
   
     fetch('http://localhost:3000/messages', {
       method: 'POST',
@@ -95,15 +98,22 @@ fetchChannels = () => {
           content: this.state.newMessage,
           user_id: this.state.currentUser.id,
           poll_site_id: this.state.selectedSite.id,
-          channel_id: this.state.channel.id
+          channel_id: this.state.channel.id,
+          username: this.state.currentUser.name
       })
       })
       .then(resp => resp.json())
       .then(data => this.setState({
         messages: [...this.state.messages, data],
         newMessage: ''
-      }))
-  }
+      }
+      )
+      )
+          // let updateMessages =  () => {
+          //   return this.state.messages.push(data)}
+          // updateMessages()
+      e.target.reset()
+}
 
   messageChange = (e) => {
     e.preventDefault()
@@ -154,11 +164,34 @@ fetchChannels = () => {
     })
     this.fetchCurrentUser()
   }
+
+  // renderChat = (renderProps) => {
+  //   const slug = renderProps.match.params.slug
+  //   const site = this.state.selectedSite.id === slug
+  //   if(site) {return <ChatContainer
+  //           messages={this.state.messages}
+  //           newMessage={this.state.newMessage}
+  //           channel={this.state.channel}
+  //           handleSiteClick={this.handleSiteClick}
+  //           currentUser={this.state.currentUser}
+  //           submitMessage={this.submitMessage} 
+  //           messageChange={this.messageChange}
+  //           siteClicked={this.state.siteClicked}
+  //           selectedSite={this.state.selectedSite} />}
+  //         else {
+  //         console.log('site', site);
+          
+  //           return 'not found'
+
+  //   }
+  // }
   
   render() {
-    console.log(this.state.currentUser)
+    console.log('cUser', this.state.currentUser)
     console.log('messages', this.state.messages)
-    console.log('channel', this.state.channel); 
+    console.log('channel', this.state.channel)
+    console.log('selectedSite', this.state.selectedSite);
+    ; 
     
     return (
       <>
@@ -180,7 +213,8 @@ fetchChannels = () => {
             handleLogout={this.handleLogout}
             handleProfileClick={this.handleProfileClick}
             />}/>
-          <Route path='/chat' render={(props) => <ChatContainer {...props}
+            {/* <Route path='/chat/:slug' exact render={this.renderChat} /> */}
+          <Route path={`/chat/${this.state.selectedSite.id}`} render={(props) => <ChatContainer {...props}
             messages={this.state.messages}
             newMessage={this.state.newMessage}
             channel={this.state.channel}

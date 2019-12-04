@@ -12,9 +12,11 @@ export class SiteContainer extends Component {
 
     handleSiteClick = (e, site) => {
         e.preventDefault()
+        console.log(site.id)
         this.props.setSelectedSite(site)
-        // debugger
-        this.props.history.push('/chat')
+       
+        this.props.history.push(`/chat/${site.id}`)
+        
       }
     
     searchResults = (searchWord) => {
@@ -55,8 +57,8 @@ export class SiteContainer extends Component {
                     onClick={this.profileClicked}/>
                 <Button style={{float: 'right'}} content='logout'
                     onClick={this.logoutClicked}/>
-                    <input type="text" placeholder="street address" onChange={this.handleChange}></input>
                 </Form>
+                <Form.Input type="text" placeholder="street address" onChange={this.handleChange}/>
                 {/* {this.state.searchTerm !== "" ? 
                 <> */}
                     <ul>

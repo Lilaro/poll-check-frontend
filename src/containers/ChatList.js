@@ -1,44 +1,53 @@
-import React from 'react'
-import {Comment, CommentGroup, Card} from 'semantic-ui-react'
+import React, {Component} from 'react'
+import {Comment, CommentGroup, Card, Segment} from 'semantic-ui-react'
 
-export function ChatList(props) {
+export class ChatList extends Component {
 
+  // constructor(){
+  //   super()
+  //   this.scrollContainerRef = React.createRef()
+  // }
+
+  // componentDidUpdate() {
+  //   // console.log("cdu in message-list")
+  //   this.scrollContainerRef.current.scrollTop = 99999999999999999999
+  // }
   
-  
-  const filteredMessages = () => {
-    return props.messages.filter(message => message.poll_site_id === props.selectedSite.id)
-  }
- console.log(filteredMessages()[0])
+  render(){
+    console.log(this.props.messages)
   return (
-
-          <Card>
-            <CommentGroup>
-              {
-              // props.selectedSite.messages !== undefined ?
-              // props.selectedSite.messages.map(message =>
-
-              filteredMessages().map(message => 
-                <div>
-                {console.log(message.user)}
-              <Comment>
-                <Comment.Avatar src="https://image.flaticon.com/icons/svg/126/126486.svg"/>
-                <Comment.Content>
-                  <Comment.Author>{message.user.name}</Comment.Author>
-                  <Comment.Text>{message.content}</Comment.Text>
-                  <Comment.Action>reply</Comment.Action>
-                </Comment.Content>
-              </Comment>
-              </div>
-              )
-              // )
-                // :
-                // null
-            }
-              
-            </CommentGroup>
-          </Card>
-         
+    // ref={this.scrollContainerRef} inside segment opening
+    <Segment style={{overflow: 'auto', maxHeight: 600 }} >
+          <CommentGroup>
+            {
+              this.props.selectedSite.messages !== undefined ?
+            // this.props.selectedSite.messages.map(message =>
+            
+            this.props.messages.map(message => 
+              <div>
+            <Comment>
+              <Comment.Avatar src="https://image.flaticon.com/icons/svg/126/126486.svg"/>
+              <Comment.Content>
+                <Comment.Author>{message.username}</Comment.Author>
+                <Comment.Text>{message.content}</Comment.Text>
+                <Comment.Action>reply</Comment.Action>
+              </Comment.Content>
+            </Comment>
+            </div>
+            )
+            :
+              null
+          }
+            
+          </CommentGroup>
+        </Segment>
+        
         )
-}
+    }
+  }
 
-export default ChatList
+  export default ChatList
+
+    // const filteredMessages = () => {
+    //   return this.props.selectedSite.messages.filter(message => message.poll_site_id === this.props.selectedSite.id)
+    // }
