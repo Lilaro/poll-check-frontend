@@ -6,6 +6,12 @@ import {withRouter, Route} from 'react-router'
 export class ChatContainer extends Component {
 
 
+    
+    // componentDidMount(){
+    //     setTimeout(this.props.maintainSelectedSite(), 10)
+        
+    // }
+
     render() {
         console.log('current user', this.props.currentUser.id)
         console.log('selectedSite', this.props.selectedSite)

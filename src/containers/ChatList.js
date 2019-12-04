@@ -8,16 +8,23 @@ export class ChatList extends Component {
   //   this.scrollContainerRef = React.createRef()
   // }
 
+  // componentDidMount() {
+  //   // this.scrollContainerRef.current.scrollTop = 99999999999999999999
+  //   console.log('cdm in chatlist');
+    
+  // }
+  
+
   // componentDidUpdate() {
   //   // console.log("cdu in message-list")
-  //   this.scrollContainerRef.current.scrollTop = 99999999999999999999
+  //   this.scrollContainerRef.current.scrollTop = 1000
   // }
   
   render(){
     console.log(this.props.messages)
   return (
     // ref={this.scrollContainerRef} inside segment opening
-    <Segment style={{overflow: 'auto', maxHeight: 600 }} >
+    <Segment style={{overflowY: 'scroll', height: 600 }} >
           <CommentGroup>
             {
               this.props.selectedSite.messages !== undefined ?

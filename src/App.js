@@ -58,14 +58,6 @@ fetchChannels = () => {
     })    
   }
 
-  // fetchMessages = () => {
-  //   fetch('http://localhost:3000/messages')
-  //   .then(resp => resp.json())
-  //   .then(data => this.setState({
-  //       messages: data
-  //   }, () => console.log(this.state.messages)))
-  // }
-
    fetchCurrentUser = () => {
     fetch('http://localhost:3000/profile', {
       headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}
@@ -76,12 +68,6 @@ fetchChannels = () => {
     }, () => console.log('current user', this.state.currentUser)
     ))
   }
-
-  // setCurrentUser = (user) => {
-  //   this.setState({
-  //     currentUser: user
-  //   })
-  // }
 
   submitMessage = (e) => {
     e.preventDefault()
@@ -163,28 +149,17 @@ fetchChannels = () => {
       } 
     })
     this.fetchCurrentUser()
+
   }
-
-  // renderChat = (renderProps) => {
-  //   const slug = renderProps.match.params.slug
-  //   const site = this.state.selectedSite.id === slug
-  //   if(site) {return <ChatContainer
-  //           messages={this.state.messages}
-  //           newMessage={this.state.newMessage}
-  //           channel={this.state.channel}
-  //           handleSiteClick={this.handleSiteClick}
-  //           currentUser={this.state.currentUser}
-  //           submitMessage={this.submitMessage} 
-  //           messageChange={this.messageChange}
-  //           siteClicked={this.state.siteClicked}
-  //           selectedSite={this.state.selectedSite} />}
-  //         else {
-  //         console.log('site', site);
-          
-  //           return 'not found'
-
-  //   }
-  // }
+  
+      maintainSelectedSite = () => {
+        fetch(`http://localhost:3000/poll_sites/${this.props.match.path.split('/')[2]}`)
+        .then(resp => resp.json())
+        .then(data => this.setState({
+            selectedSite: data
+        })
+        )
+      }
   
   render() {
     console.log('cUser', this.state.currentUser)
@@ -213,7 +188,6 @@ fetchChannels = () => {
             handleLogout={this.handleLogout}
             handleProfileClick={this.handleProfileClick}
             />}/>
-            {/* <Route path='/chat/:slug' exact render={this.renderChat} /> */}
           <Route path={`/chat/${this.state.selectedSite.id}`} render={(props) => <ChatContainer {...props}
             messages={this.state.messages}
             newMessage={this.state.newMessage}
@@ -223,7 +197,9 @@ fetchChannels = () => {
             submitMessage={this.submitMessage} 
             messageChange={this.messageChange}
             siteClicked={this.state.siteClicked}
-            selectedSite={this.state.selectedSite}/>} />
+            selectedSite={this.state.selectedSite}
+            setSelectedSite={this.setSelectedSite}
+            maintainSelectedSite={this.maintainSelectedSite}/>} />
           <Route path='/profile' render={(props) => <Profile {...props}
             currentUser={this.state.currentUser}
             editName={this.state.editName}
@@ -244,9 +220,9 @@ fetchChannels = () => {
 export default App 
 
 
-  // handleSiteClick = (e, site) => {
-    //   e.preventDefault()
-    //   this.setState({
+// handleSiteClick = (e, site) => {
+  //   e.preventDefault()
+  //   this.setState({
       //       selectedSite: site,
       //       siteClicked: !this.state.siteClicked
       //   }, () => console.log('site clicked', this.state.siteClicked)
@@ -254,18 +230,40 @@ export default App
       //   debugger
       //   // this.props.history.push('/chat')
       // }
-
-
+      
+      
       // gotToken = (token, userId, name) => {
-      //   localStorage.token = token
-      //   localStorage.userId = userId
+        //   localStorage.token = token
+        //   localStorage.userId = userId
       //   localStorage.name = name
-        
+      
       //   debugger
-        
-        // this.setState({
+      
+      // this.setState({
         //   token,
         //   userId,
         //   name
         // }, () => console.log('gotToken invoked', this.state.name))
-      // }
+        // }
+        
+
+  // renderChat = (renderProps) => {
+  //   const slug = renderProps.match.params.slug
+  //   const site = this.state.selectedSite.id === slug
+  //   if(site) {return <ChatContainer
+  //           messages={this.state.messages}
+  //           newMessage={this.state.newMessage}
+  //           channel={this.state.channel}
+  //           handleSiteClick={this.handleSiteClick}
+  //           currentUser={this.state.currentUser}
+  //           submitMessage={this.submitMessage} 
+  //           messageChange={this.messageChange}
+  //           siteClicked={this.state.siteClicked}
+  //           selectedSite={this.state.selectedSite} />}
+  //         else {
+  //         console.log('site', site);
+          
+  //           return 'not found'
+
+  //   }
+  // }

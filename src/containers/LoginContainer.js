@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
-import {Grid} from 'semantic-ui-react';
+import {Grid, Header} from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom'
+import ballotBox from '../BallotIcon.svg'
+
 
 class LoginContainer extends Component {
 
@@ -80,7 +82,13 @@ class LoginContainer extends Component {
 
   render(){
       return (
-      <Grid centered columns={2}>
+        <Grid centered columns={2} rows={2}>
+        <Grid.Row>
+        <Header as='h1' style={{margin: '30px'}}>
+          <img src={ballotBox} alt="Ballot Box Icon"/>
+          Poll Check</Header> 
+          </Grid.Row>
+          <Grid.Row>
         <Grid.Column>
           <Login 
               loginEmail={this.state.loginEmail}
@@ -98,6 +106,7 @@ class LoginContainer extends Component {
           SignUpSubmitted={this.SignUpSubmitted}
           />
         </Grid.Column>
+        </Grid.Row> 
       </Grid>
       )
   }
