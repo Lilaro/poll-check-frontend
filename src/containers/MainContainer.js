@@ -36,7 +36,7 @@ export class MainContainer extends Component {
             <Route Component={ChatContainer}/>
                 : */}
             <Grid columns={2}>
-                <Grid.Column width={5}>
+                <Grid.Column width={4}>
                 <Route render={(props) => <SiteContainer {...props}
 
                     token={this.props.token}

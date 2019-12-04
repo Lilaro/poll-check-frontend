@@ -54,7 +54,7 @@ export class SiteContainer extends Component {
                 <Button style={{float: 'right'}} content='logout'
                     onClick={this.logoutClicked}/>
                 </Form>
-                <Form.Input type="text" placeholder="street address" onChange={this.handleChange}/>
+                <Form.Input type="text" placeholder="street address" onChange={this.handleChange} style={{float: 'left'}}/>
                 {this.state.searchTerm !== "" ? 
                 <>
                     <ul>

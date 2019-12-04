@@ -57,9 +57,7 @@ export default function App(props) {
             }}
           >
             <div>
-              Poll Site
-              <h2>{selectedSite.site_name}</h2>
-              {/* <p>{selectedSite.voter_entrance}</p> */}
+              <h4>{selectedSite.site_name}</h4>
           <p>{selectedSite.street_number + ' ' + selectedSite.street_name + ' ' + selectedSite.borough}</p>
               <strong>Accessible Entrance:</strong>
               <p>{selectedSite.handicap_entrance}</p>
