@@ -6,11 +6,9 @@ export default function ChatForm(props) {
         <div>
                 
             <Form onSubmit={props.submitMessage}>
-                <input type="text" placeholder="send a message"
+                <Form.Input inverted type="text" placeholder="send a message"
                 onChange={props.messageChange}
-                >
-                </input>
-               
+                />
             </Form>
         </div>
     )

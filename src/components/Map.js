@@ -16,21 +16,48 @@ export default function App(props) {
   })
 
   const [selectedSite, handleSiteClick] = useState(null);
+  // const [count, setCount] = useState(0)
+  // const [color, setColor] = useState('')
 
   useEffect(() => {
     const listener = e => {
       if (e.key === "Escape") {
         handleSiteClick(null);
       }
-    };
+    }
     window.addEventListener("keydown", listener);
 
     return () => {
-      window.removeEventListener("keydown", listener);
-    };
-  }, []);
+      window.removeEventListener("keydown", listener)
+    }
+  }, [])
+  
+ 
+
+  // function icon  { 
+  //   let alertIcon;
+  //   <Icon link name="bullseye" onClick={handleClick}/>
+  // }
+  //   let iconForMap;
+  //   if ({count} === 1) {
+   
+  // console.log({count})
+  //   iconForMap = <Icon link name="bullseye" className="yellow" color='yellow' onClick={() => setCount(count + 1)}/>
+  // }
+  // else if ({count} === 2) {
+  //   iconForMap =  <Icon link name="bullseye" color='orange' onClick={() => setCount(count + 1)}/>
+  // }
+  //  else if ({count} >= 3) {
+  //     iconForMap = <Icon link name="bullseye" color='red' onClick={() => setCount(count + 1)}/>
+  //   } 
+  //   else { 
+  //     iconForMap =  <Icon link name="bullseye" onClick={() => setCount(count + 1)}/>
+  //   }
+  //   return iconForMap
+
 
     return (
+    
       <> 
        <ReactMapGL {...viewport}
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
@@ -41,13 +68,31 @@ export default function App(props) {
         } > 
         {props.sites.map((site) => (
          <Marker key={site.id} latitude={parseFloat(site.latitude)} longitude={parseFloat(site.longitude)}>
-            {/* <button
-              className="marker-button"
-              onClick={(e) => handleSiteClick(site)}
-            > */}
+          <div>
               <img src={ballotBox} alt="Ballot Box Icon" className="marker-button"
               onClick={(e) => handleSiteClick(site)}/>
-            {/* </button> */}
+              
+              {/* <Icon link name="bullseye" color={props.color} onClick={props.alertClick}/> */}
+              
+              </div>
+
+              {/* <div>
+                {(() => {
+                  switch{props.count {
+                    case 0:
+                      return <Icon link name="bullseye" onClick={props.alertClick}/>
+                    case 1:
+                      return <Icon link name="bullseye" color={props.color} onClick={props.alertClick}/>;
+                    case 2:
+                      return <Icon link name="bullseye" color={props.color} onClick={props.alertClick}/>;
+                    case 3:
+                      return <Icon link name="bullseye" color={props.color} onClick={props.alertClick}/>;
+                    default:
+                      return <Icon link name="bullseye" onClick={props.alertClick}/>;
+                  }
+                })()}
+              </div> */}
+           
          </Marker>
        ))}
        {selectedSite ? (
@@ -64,8 +109,12 @@ export default function App(props) {
           <p>{selectedSite.street_number + ' ' + selectedSite.street_name + ', ' + selectedSite.borough}</p>
               {/* <strong>Accessible Entrance:</strong> */}
               <p><Icon name='wheelchair' color='teal'/> {selectedSite.handicap_entrance}</p>
+            
             </div>
+            
           </Popup>
+          
+           
         ) : null}
        </ReactMapGL>
       </>

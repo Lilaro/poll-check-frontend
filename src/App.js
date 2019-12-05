@@ -21,8 +21,9 @@ export class App extends Component {
     editName: '',
     editEmail: '',
     editPassword: '',
-    errors: []
+    errors: [],
   }
+  
 
   setSelectedSite = (site) => {
     this.setState({
@@ -92,12 +93,7 @@ fetchChannels = () => {
       .then(data => this.setState({
         messages: [...this.state.messages, data],
         newMessage: ''
-      }
-      )
-      )
-          // let updateMessages =  () => {
-          //   return this.state.messages.push(data)}
-          // updateMessages()
+      }))
       e.target.reset()
 }
 
@@ -199,7 +195,9 @@ fetchChannels = () => {
             siteClicked={this.state.siteClicked}
             selectedSite={this.state.selectedSite}
             setSelectedSite={this.setSelectedSite}
-            maintainSelectedSite={this.maintainSelectedSite}/>} />
+            maintainSelectedSite={this.maintainSelectedSite}
+            handleLogout={this.handleLogout}
+            handleProfileClick={this.handleProfileClick}/>} />
           <Route path='/profile' render={(props) => <Profile {...props}
             currentUser={this.state.currentUser}
             editName={this.state.editName}

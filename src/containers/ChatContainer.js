@@ -2,17 +2,22 @@ import React, { Component } from 'react';
 import ChatList from './ChatList';
 import ChatForm from '../components/ChatForm'
 import {withRouter, Route} from 'react-router'
-import {Grid, Header, Segment} from 'semantic-ui-react';
+import {Breadcrumb, Header, Segment} from 'semantic-ui-react';
 import ballotBox from '../BallotIcon.svg'
 
 export class ChatContainer extends Component {
 
-
-    
-    // componentDidMount(){
-    //     setTimeout(this.props.maintainSelectedSite(), 10)
+    logoutClicked = (e) => {
+        e.preventDefault()
         
-    // }
+        this.props.handleLogout()
+        this.props.history.push('/login')
+    }
+    
+    profileClicked = (e) => {
+        e.preventDefault()
+        this.props.history.push('/profile')
+}
 
     render() {
         console.log('current user', this.props.currentUser.id)
@@ -21,24 +26,21 @@ export class ChatContainer extends Component {
    
         return (
             <>
-                {/* <Segment clearing>
-                    <Header as='h1' floated='left'>
-                    <img src={ballotBox} alt="Ballot Box Icon"/> Poll Check
-                    <Header/>
-                    <Header as='h4' floated='right'>
-                    {this.props.selectedSite.site_name}
-                    <Header/> 
-                </Segment> */}
                  <Segment clearing height='60px'>
-                    <Header as='h5' floated='left'>
+                    <Header as='h2' floated='left'>
                      {this.props.selectedSite.site_name}
                     </Header>
                      <Header as='h4' floated='right'>
                         <img src={ballotBox} alt="Ballot Box Icon"/>
                          Poll Check
                      </Header>
+                     <Breadcrumb floated='right'>
+                <Breadcrumb.Section link onClick={this.profileClicked}><h4>my account</h4></Breadcrumb.Section>
+                <Breadcrumb.Divider>/</Breadcrumb.Divider>
+                <Breadcrumb.Section link onClick={this.logoutClicked}><h4>logout</h4></Breadcrumb.Section>
+            </Breadcrumb>    
                 </Segment>
-                <Segment width='1000px'>
+                <Segment color='black' width='1000px'>
                 <ChatList 
                     selectedSite={this.props.selectedSite}
                     messages={this.props.messages} />

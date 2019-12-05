@@ -33,7 +33,10 @@ export class Sidebar extends Component {
                     userId={this.props.userId}
                     selectedSite={this.props.selectedSite}
                     currentUser={this.props.currentUser}
-                    handleSiteClick={this.props.handleSiteClick}></Map>
+                    handleSiteClick={this.props.handleSiteClick}
+                    count={this.props.count}
+                        color={this.props.color}
+                        alertClick={this.props.alertClick}></Map>
     {/* } */}
             </>
         )

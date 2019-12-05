@@ -3,41 +3,22 @@ import {Comment, CommentGroup, Card, Segment} from 'semantic-ui-react'
 
 export class ChatList extends Component {
 
-  // constructor(){
-  //   super()
-  //   this.scrollContainerRef = React.createRef()
-  // }
-
-  // componentDidMount() {
-  //   // this.scrollContainerRef.current.scrollTop = 99999999999999999999
-  //   console.log('cdm in chatlist');
-    
-  // }
-  
-
-  // componentDidUpdate() {
-  //   // console.log("cdu in message-list")
-  //   this.scrollContainerRef.current.scrollTop = 1000
-  // }
   
   render(){
-    debugger
     console.log(this.props.messages)
-  return (
+    return (
     // ref={this.scrollContainerRef} inside segment opening
-    <Segment style={{overflowY: 'scroll', height: 550 }} >
+    <Segment style={{overflowY: 'scroll', height: 550 }}  >
           <CommentGroup>
-            {
-              this.props.selectedSite.messages !== undefined ?
-            // this.props.selectedSite.messages.map(message =>
+            {this.props.selectedSite.messages !== undefined ?
             
             this.props.messages.map(message => 
               <div>
             <Comment margin='10px'>
               <Comment.Avatar src="https://image.flaticon.com/icons/svg/126/126486.svg"/>
               <Comment.Content>
-                <Comment.Author>{message.username}</Comment.Author>
-                <Comment.Metadata>
+                <Comment.Author d>{message.username}</Comment.Author>
+                <Comment.Metadata >
                     <div>{message.created_at.split("T")[0]}</div>
                 </Comment.Metadata>
                 <Comment.Text>{message.content}</Comment.Text>
@@ -62,3 +43,19 @@ export class ChatList extends Component {
     // const filteredMessages = () => {
     //   return this.props.selectedSite.messages.filter(message => message.poll_site_id === this.props.selectedSite.id)
     // }
+                // constructor(){
+                //   super()
+                //   this.scrollContainerRef = React.createRef()
+                // }
+              
+                // componentDidMount() {
+                //   // this.scrollContainerRef.current.scrollTop = 99999999999999999999
+                //   console.log('cdm in chatlist');
+                  
+                // }
+                
+              
+                // componentDidUpdate() {
+                //   // console.log("cdu in message-list")
+                //   this.scrollContainerRef.current.scrollTop = 1000
+                // }

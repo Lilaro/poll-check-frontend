@@ -10,7 +10,19 @@ export class MainContainer extends Component {
 
     state = {
         searchTerm: "",
+        
+        count: 0,
+        color: ''
     }
+
+
+  alertClick = () => {
+      
+    this.setState({
+      count: this.state.count + 1,
+      color: 'red'
+    })
+  }
 
     handleSiteClick = (e, site) => {
         e.preventDefault()
@@ -72,6 +84,9 @@ export class MainContainer extends Component {
                     searchTerm={this.state.searchTerm}
                     handleChange={this.handleChange}
                     searchResults={this.searchResults}
+                    count={this.state.count}
+                        color={this.state.color}
+                        alertClick={this.alertClick}
 
                     /> } /> 
                 </Grid.Column>
@@ -94,6 +109,9 @@ export class MainContainer extends Component {
                         searchTerm={this.state.searchTerm}
                         handleChange={this.handleChange}
                         searchResults={this.searchResults}
+                        count={this.state.count}
+                        color={this.state.color}
+                        alertClick={this.alertClick}
                         >
                     </Sidebar>
                 </Grid.Column>

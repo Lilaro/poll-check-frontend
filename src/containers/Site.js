@@ -9,7 +9,6 @@ class Site extends Component {
    
     
     render() { 
-        // console.log(this.props.site)
         return (
             <>
                
@@ -23,16 +22,6 @@ class Site extends Component {
                 <Button>
                     <Icon name='comments outline' />Chat</Button>
                 </Card> 
-                {/* {this.props.siteClicked ?
-                    <ChatContainer 
-                    channelId={this.props.channel.id}
-                    site={this.props.site}
-                    messages={this.props.messages}
-                    name={this.props.name}
-                    userId={this.props.userId}>
-                    </ChatContainer>
-                    :
-                null*/}
                 
             </>
             )
@@ -40,10 +29,10 @@ class Site extends Component {
     }
     
     export default withRouter(Site)
-
+    
     
     // state = {
-    //     siteClicked: false,
+        //     siteClicked: false,
     //     selectedSite: {},
     // }
 
@@ -56,3 +45,14 @@ class Site extends Component {
     //     })
     //     this.props.history.push('/chat')
     // }
+        {/* <Icon link key={this.props.site.id} name="bullseye" color={this.props.color} onClick={this.props.alertClick}/> */}
+        {/* {this.props.siteClicked ?
+            <ChatContainer 
+            channelId={this.props.channel.id}
+            site={this.props.site}
+            messages={this.props.messages}
+            name={this.props.name}
+            userId={this.props.userId}>
+            </ChatContainer>
+            :
+        null*/}
