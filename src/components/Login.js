@@ -1,10 +1,12 @@
 import React from 'react'
-import {Form} from 'semantic-ui-react'
+import {Form, Card, Segment} from 'semantic-ui-react'
 
 export default function Login(props) {
     return (
-      <div>
+      <div >
+      <Segment inverted style={{margin: '40px', height: '217px'}}> 
       <Form onSubmit={props.loginSubmitted}>
+      
       
       <Form.Input 
         type="text" 
@@ -23,6 +25,7 @@ export default function Login(props) {
       <Form.Button content="login" type="submit" value="Log In"/>
      
     </Form> 
+    </Segment> 
         </div>
     )
 }

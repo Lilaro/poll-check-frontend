@@ -21,10 +21,11 @@ export class ChatList extends Component {
   // }
   
   render(){
+    debugger
     console.log(this.props.messages)
   return (
     // ref={this.scrollContainerRef} inside segment opening
-    <Segment style={{overflowY: 'scroll', height: 600 }} >
+    <Segment style={{overflowY: 'scroll', height: 550 }} >
           <CommentGroup>
             {
               this.props.selectedSite.messages !== undefined ?
@@ -32,12 +33,15 @@ export class ChatList extends Component {
             
             this.props.messages.map(message => 
               <div>
-            <Comment>
+            <Comment margin='10px'>
               <Comment.Avatar src="https://image.flaticon.com/icons/svg/126/126486.svg"/>
               <Comment.Content>
                 <Comment.Author>{message.username}</Comment.Author>
+                <Comment.Metadata>
+                    <div>{message.created_at.split("T")[0]}</div>
+                </Comment.Metadata>
                 <Comment.Text>{message.content}</Comment.Text>
-                <Comment.Action>reply</Comment.Action>
+                {/* <Comment.Action onClick={this.handleReplyClick}>reply</Comment.Action> */}
               </Comment.Content>
             </Comment>
             </div>

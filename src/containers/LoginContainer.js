@@ -36,7 +36,7 @@ class LoginContainer extends Component {
           if (data.errors) {
           this.setState({
             errors: data.message
-          })
+          }, window.alert("The email address or password you entered are invalid!"))
           } else {
           // this.props.gotToken(data.token, data.user.id, data.user.name)
           localStorage.setItem("token", data.token)
@@ -66,7 +66,7 @@ class LoginContainer extends Component {
       if (data.errors) {
         this.setState({
           errors: data.errors
-        })
+        }, window.alert("The email address you entered is already in use!"))
       } else {
         this.props.history.push('/home')
       }
@@ -84,9 +84,12 @@ class LoginContainer extends Component {
       return (
         <Grid centered columns={2} rows={2}>
         <Grid.Row>
-        <Header as='h1' style={{margin: '30px'}}>
+        <Header style={{margin: '30px'}}>
           <img src={ballotBox} alt="Ballot Box Icon"/>
-          Poll Check</Header> 
+          <h1>Poll Check</h1>
+          <h5>rides - lines - voting problems?</h5>
+          <h4>communicate with your neighbors about election day!</h4>
+          </Header> 
           </Grid.Row>
           <Grid.Row>
         <Grid.Column>

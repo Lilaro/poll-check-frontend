@@ -1,7 +1,7 @@
 import ReactMapGL, {Marker, Popup} from 'react-map-gl'
 import React, {useState, useEffect } from 'react'
 import Site from '../containers/Site'
-import {Form} from 'semantic-ui-react'
+import {Form, Icon} from 'semantic-ui-react'
 import ballotBox from '../BallotIcon.svg'
 
 
@@ -12,7 +12,7 @@ export default function App(props) {
     longitude: -73.844225,
     width: "100vw",
     height: "100vh",
-    zoom: 10.5
+    zoom: 11
   })
 
   const [selectedSite, handleSiteClick] = useState(null);
@@ -60,9 +60,10 @@ export default function App(props) {
           >
             <div>
               <h4>{selectedSite.site_name}</h4>
+          <p>District {selectedSite.council_district}</p>
           <p>{selectedSite.street_number + ' ' + selectedSite.street_name + ', ' + selectedSite.borough}</p>
-              <strong>Accessible Entrance:</strong>
-              <p>{selectedSite.handicap_entrance}</p>
+              {/* <strong>Accessible Entrance:</strong> */}
+              <p><Icon name='wheelchair' color='teal'/> {selectedSite.handicap_entrance}</p>
             </div>
           </Popup>
         ) : null}

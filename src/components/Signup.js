@@ -1,9 +1,10 @@
 import React from 'react'
-import {Form} from 'semantic-ui-react'
+import {Form, Segment, Card} from 'semantic-ui-react'
 
 export default function Signup(props) {
     return (
         <div>
+            <Segment inverted style={{margin: '40px'}}>
         <Form onSubmit={props.SignUpSubmitted}>
         <Form.Input 
             type="text" 
@@ -28,6 +29,7 @@ export default function Signup(props) {
         />
       <Form.Button content="sign up" type="submit" value="Sign Up"/>
     </Form> 
+    </Segment>
         </div>
     )
 }

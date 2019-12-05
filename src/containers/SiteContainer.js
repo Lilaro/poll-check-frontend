@@ -1,15 +1,9 @@
 import React, { Component } from 'react'
 import Site from './Site'
-import {Card, Form, Button, Header} from 'semantic-ui-react'
-import {Marker} from 'react-map-gl'
+import {Segment, Form, Breadcrumb, Header, Icon} from 'semantic-ui-react'
 import ballotBox from '../BallotIcon.svg'
 
 export class SiteContainer extends Component {
-
-    
-         
-    
-    
     
     logoutClicked = (e) => {
             e.preventDefault()
@@ -25,20 +19,18 @@ export class SiteContainer extends Component {
 
         render() {
             return (
-                
-              
+
                 <div>
-              <h3 style={{float: 'left'}}>Find a poll site!</h3>
-                <Header as='h2'>
-                <Button style={{float: 'right'}} content='edit account'
-                    onClick={this.profileClicked}/>
-                <Button style={{float: 'right'}} content='logout'
-                    onClick={this.logoutClicked}/>
+                <Header as='h3'>
+                    <img src={ballotBox} alt="Ballot Box Icon" />
+                    Find a polling site!
                 </Header>
-                <Form.Input type="text" placeholder="street address" onChange={this.props.handleChange} style={{float: 'left'}}/>
-                {/* {this.props.searchTerm !== "" ?  */}
+               
+                <Form.Input fluid placeholder="Site Address" onChange={this.props.handleChange}
+                 icon={{ name: 'search'}} />
+                
                 <>
-                    <ul>
+                    <Segment style={{overflowY: 'scroll', height: 560 }}>
                     { this.props.searchResults(this.props.searchTerm).map(site => {
                         return <Site  
                         key={site.id} 
@@ -53,7 +45,12 @@ export class SiteContainer extends Component {
                         </Site>
                         })
                     } 
-                    </ul>
+                    </Segment>
+                    <Breadcrumb>
+                    <Breadcrumb.Section link onClick={this.profileClicked}><h3>my account</h3></Breadcrumb.Section>
+                    <Breadcrumb.Divider>/</Breadcrumb.Divider>
+                    <Breadcrumb.Section link onClick={this.logoutClicked}><h3>logout</h3></Breadcrumb.Section>
+                </Breadcrumb>
                     
                     </>
                    
