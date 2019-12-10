@@ -6,7 +6,7 @@ import LoginContainer from './containers/LoginContainer'
 import MainContainer from './containers/MainContainer'
 import ChatContainer from './containers/ChatContainer'
 import Profile from './containers/Profile'
-import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom'
+import { BrowserRouter, Route, Switch} from 'react-router-dom'
 
 export class App extends Component {
 

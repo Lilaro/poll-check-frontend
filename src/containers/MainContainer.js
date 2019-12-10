@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
-// import pollData from '../data/poll-sites';
 import SiteContainer from './SiteContainer';
 import Sidebar from './Sidebar';
-import {Grid, Header} from 'semantic-ui-react'
+import {Grid} from 'semantic-ui-react'
 import {withRouter, Route} from 'react-router'
-import ballotBox from '../BallotIcon.svg'
 
 export class MainContainer extends Component {
 
     state = {
-        searchTerm: "",
-        
-        count: 0,
-        color: ''
+        searchTerm: ""
     }
 
 

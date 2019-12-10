@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Card, Button, Icon} from 'semantic-ui-react'
-import ChatContainer from './ChatContainer'
+import ChatContainer from '../containers/ChatContainer'
 import { withRouter } from 'react-router-dom'
 import ReactMapGL, {Marker, Popup} from 'react-map-gl'
 
@@ -8,7 +8,8 @@ class Site extends Component {
     
    
     
-    render() { 
+    render() {
+     
         return (
             <>
                
