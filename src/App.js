@@ -28,17 +28,16 @@ export class App extends Component {
   setSelectedSite = (site) => {
     this.setState({
       siteClicked: !this.state.siteClicked,
-      selectedSite: site,
-      messages: site.messages
-    })
-  }
+        selectedSite: site,
+        messages: site.messages
+      })
+    }
 
-  componentDidMount() {
-    fetch('http://localhost:3000/poll_sites')
+    componentDidMount() {
+      fetch('http://localhost:3000/poll_sites')
     .then(resp => resp.json())
     .then(data => this.setState({
-        sites: data,
-    
+        sites: data
     }));
     this.fetchChannels() 
     // this.fetchMessages() 

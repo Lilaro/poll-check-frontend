@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SiteContainer from './SiteContainer';
 import Sidebar from './Sidebar';
+import Map from '../components/Map'
 import {Grid} from 'semantic-ui-react'
 import {withRouter, Route} from 'react-router'
 
@@ -38,12 +39,12 @@ export class MainContainer extends Component {
             } 
         }
         
-        handleChange = (e) => {   
-            this.setState({
-                ...this.state,
-                searchTerm: e.target.value,
-            }, () => this.searchResults(this.state.searchTerm))
-        }
+    handleChange = (e) => {   
+        this.setState({
+            ...this.state,
+            searchTerm: e.target.value,
+        }, () => this.searchResults(this.state.searchTerm))
+    }
     
     render() {
         console.log('filteredSites', this.state.filteredSites);
@@ -86,7 +87,7 @@ export class MainContainer extends Component {
                     /> } /> 
                 </Grid.Column>
                 <Grid.Column width={10}>
-                    <Sidebar 
+                    <Map 
                         sites={this.props.sites} 
                         name={this.props.name}
                         token={this.props.token}
@@ -108,7 +109,7 @@ export class MainContainer extends Component {
                         color={this.state.color}
                         alertClick={this.alertClick}
                         >
-                    </Sidebar>
+                    </Map>
                 </Grid.Column>
                 </Grid.Row>
             </Grid>
