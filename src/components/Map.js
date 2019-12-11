@@ -14,12 +14,12 @@ export default function App(props) {
     zoom: 11
   })
 
-  const [selectedSite, handleSiteClick] = useState(null);
+  const [selectedSite, setSite] = useState(null);
 
   useEffect(() => {
     const listener = e => {
       if (e.key === "Escape") {
-        handleSiteClick(null);
+        setSite(null);
       }
     }
     window.addEventListener("keydown", listener);
@@ -33,20 +33,20 @@ export default function App(props) {
   return (
     
       <> 
-       <Form.Input fluid placeholder="Site Address" onChange={props.handleChange}
-                icon={{ name: 'search'}} />
        <ReactMapGL {...viewport}
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
           mapStyle="mapbox://styles/lisalarochelle/ck36bxl2r08n81cpi5b8l1u7v"
           onViewportChange={(viewport) => {
-          setViewport(viewport)
-        }
+            setViewport(viewport)
+          }
         } > 
+        <Form.Input fluid placeholder="Site Address" onChange={props.handleChange}
+                 icon={{ name: 'search'}} />
         {props.searchResults(props.searchTerm).map((site) => (
          <Marker key={site.id} latitude={parseFloat(site.latitude)} longitude={parseFloat(site.longitude)}>
           <div>
               <img src={ballotBox} alt="Ballot Box Icon" className="marker-button"
-              onClick={(e) => handleSiteClick(site)}/>
+              onClick={(e) => setSite(site)}/>
               
               {/* <Icon link name="bullseye" color={props.color} onClick={props.alertClick}/> */}
               
@@ -60,7 +60,7 @@ export default function App(props) {
           latitude={parseFloat(selectedSite.latitude)}
           longitude={parseFloat(selectedSite.longitude)}
           onClose={() => {
-              handleSiteClick(null);
+              setSite(null);
             }}
             >
             <div>
@@ -69,7 +69,7 @@ export default function App(props) {
           <p>{selectedSite.street_number + ' ' + selectedSite.street_name + ', ' + selectedSite.borough}</p>
               {/* <strong>Accessible Entrance:</strong> */}
               <p><Icon name='wheelchair' color='teal'/> {selectedSite.handicap_entrance}</p>
-              <Button>
+              <Button onClick={(e) => props.handleSiteClick(e, props.site)}>
                     <Icon name='comments outline' />Chat</Button>
             </div>
             
