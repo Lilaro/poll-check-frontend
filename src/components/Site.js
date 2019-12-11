@@ -15,7 +15,7 @@ class Site extends Component {
                
                 <Card
                 key={this.props.site.id}
-                siteId={this.props.site.id}
+                siteid={this.props.site.id}
                 latitude={this.props.site.latitude} longtitude={this.props.site.longitude}
                 onClick={(e) => this.props.handleSiteClick(e, this.props.site)}> 
                 <p>{this.props.site.voter_entrance}, {this.props.site.city}</p>

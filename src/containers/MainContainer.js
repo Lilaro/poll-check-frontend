@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import SiteContainer from './SiteContainer';
-import Sidebar from './Sidebar';
 import Map from '../components/Map'
+import SiteContainer from './SiteContainer'
 import {Grid} from 'semantic-ui-react'
 import {withRouter, Route} from 'react-router'
 
@@ -43,7 +42,8 @@ export class MainContainer extends Component {
         this.setState({
             ...this.state,
             searchTerm: e.target.value,
-        }, () => this.searchResults(this.state.searchTerm))
+        }, () => this.searchResults(this.state.searchTerm), console.log(this.state.searchTerm)
+        )
     }
     
     render() {
@@ -81,8 +81,8 @@ export class MainContainer extends Component {
                     handleChange={this.handleChange}
                     searchResults={this.searchResults}
                     count={this.state.count}
-                        color={this.state.color}
-                        alertClick={this.alertClick}
+                    color={this.state.color}
+                    alertClick={this.alertClick}
 
                     /> } /> 
                 </Grid.Column>
