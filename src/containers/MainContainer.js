@@ -21,7 +21,7 @@ export class MainContainer extends Component {
 
     handleSiteClick = (e, site) => {
         e.preventDefault()
-        console.log(site.id)
+        console.log('site clicked', site.id)
 
         this.props.setSelectedSite(site)
         this.props.history.push(`/chat/${site.id}`)

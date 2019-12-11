@@ -69,7 +69,7 @@ export default function App(props) {
           <p>{selectedSite.street_number + ' ' + selectedSite.street_name + ', ' + selectedSite.borough}</p>
               {/* <strong>Accessible Entrance:</strong> */}
               <p><Icon name='wheelchair' color='teal'/> {selectedSite.handicap_entrance}</p>
-              <Button onClick={(e) => props.handleSiteClick(e, props.site)}>
+              <Button onClick={(e) => props.handleSiteClick(e, selectedSite)}>
                     <Icon name='comments outline' />Chat</Button>
             </div>
             
