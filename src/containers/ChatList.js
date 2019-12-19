@@ -8,7 +8,7 @@ export class ChatList extends Component {
     console.log(this.props.messages)
     return (
     // ref={this.scrollContainerRef} inside segment opening
-    <Segment style={{overflowY: 'scroll', height: 550 }}  >
+    <Segment style={{overflowY: 'scroll', height: 520 }}  >
           <CommentGroup>
             {this.props.selectedSite.messages !== undefined ?
             
