@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Map from '../components/Map'
-import SiteContainer from './SiteContainer'
 import {Grid} from 'semantic-ui-react'
 import {withRouter, Route} from 'react-router'
 
@@ -59,33 +58,6 @@ export class MainContainer extends Component {
             <Grid columns={2} rows={2}>
            
             <Grid.Row>
-                <Grid.Column width={5}>
-                <Route render={(props) => <SiteContainer {...props}
-
-                    token={this.props.token}
-                    sites={this.props.sites}
-                    name={this.props.name}
-                    channel={this.props.channel}
-                    userId={this.props.userId}
-                    messages={this.props.messages}
-                    newMessage={this.props.newMessage}
-                    siteClicked={this.props.siteClicked}
-                    selectedSite={this.props.selectedSite}
-                    handleSiteClick={this.handleSiteClick}
-                    currentUser={this.props.currentUser}
-                    submitMessage={this.props.submitMessage}
-                    setSelectedSite={this.props.setSelectedSite}
-                    handleLogout={this.props.handleLogout}
-                    handleProfileClick={this.props.handleProfileClick}
-                    searchTerm={this.state.searchTerm}
-                    handleChange={this.handleChange}
-                    searchResults={this.searchResults}
-                    count={this.state.count}
-                    color={this.state.color}
-                    alertClick={this.alertClick}
-
-                    /> } /> 
-                </Grid.Column>
                 <Grid.Column width={10}>
                     <Map 
                         sites={this.props.sites} 
@@ -123,19 +95,48 @@ export class MainContainer extends Component {
 export default withRouter(MainContainer)
 
 
-    // state = {
+// state = {
     //     selectedSite: {},
     //     siteClicked: false,
     // }
-
+    
     // handleSiteClick = (e, site) => {
-    //     console.log(site)
-    //     // debugger
-    //     e.preventDefault()
-    //     this.setState({
-    //         selectedSite: {...site},
-    //         siteClicked: !this.state.siteClicked
-    //     }, () => console.log('site clicked', this.state.selectedSite)
-    //     )
-    //     this.props.history.push('/chat')
-    //   }
+        //     console.log(site)
+        //     // debugger
+        //     e.preventDefault()
+        //     this.setState({
+            //         selectedSite: {...site},
+            //         siteClicked: !this.state.siteClicked
+            //     }, () => console.log('site clicked', this.state.selectedSite)
+            //     )
+            //     this.props.history.push('/chat')
+            //   }
+
+            
+{/* <Grid.Column width={5}>
+<Route render={(props) => <SiteContainer {...props}
+
+    token={this.props.token}
+    sites={this.props.sites}
+    name={this.props.name}
+    channel={this.props.channel}
+    userId={this.props.userId}
+    messages={this.props.messages}
+    newMessage={this.props.newMessage}
+    siteClicked={this.props.siteClicked}
+    selectedSite={this.props.selectedSite}
+    handleSiteClick={this.handleSiteClick}
+    currentUser={this.props.currentUser}
+    submitMessage={this.props.submitMessage}
+    setSelectedSite={this.props.setSelectedSite}
+    handleLogout={this.props.handleLogout}
+    handleProfileClick={this.props.handleProfileClick}
+    searchTerm={this.state.searchTerm}
+    handleChange={this.handleChange}
+    searchResults={this.searchResults}
+    count={this.state.count}
+    color={this.state.color}
+    alertClick={this.alertClick}
+
+    /> } /> 
+</Grid.Column> */}
