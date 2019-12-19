@@ -1,6 +1,6 @@
 import ReactMapGL, {Marker, Popup} from 'react-map-gl'
 import React, {useState, useEffect } from 'react'
-import {Icon, Button, Form} from 'semantic-ui-react'
+import {Icon, Button, Form, Card} from 'semantic-ui-react'
 import ballotBox from '../BallotIcon.svg'
 
 
@@ -14,7 +14,7 @@ export default function App(props) {
     zoom: 11
   })
 
-  const [selectedSite, setSite] = useState(null);
+  const [clickededSite, setSite] = useState(null);
 
   useEffect(() => {
     const listener = e => {
@@ -55,21 +55,27 @@ export default function App(props) {
          </Marker>
        ))}
        
-       {selectedSite ? (
+       {clickededSite ? (
           <Popup
-          latitude={parseFloat(selectedSite.latitude)}
-          longitude={parseFloat(selectedSite.longitude)}
+          key={clickededSite.id}
+          site={clickededSite} 
+          channel={props.channel}
+          messages={props.messages}
+          selectedSite={props.selectedSite}
+          siteClicked={props.siteClicked}
+          handleSiteClick={props.handleSiteClick}
+          latitude={parseFloat(clickededSite.latitude)}
+          longitude={parseFloat(clickededSite.longitude)}
           onClose={() => {
               setSite(null);
             }}
             >
             <div>
-              <h4>{selectedSite.site_name}</h4>
-          <p>District {selectedSite.council_district}</p>
-          <p>{selectedSite.street_number + ' ' + selectedSite.street_name + ', ' + selectedSite.borough}</p>
-              {/* <strong>Accessible Entrance:</strong> */}
-              <p><Icon name='wheelchair' color='teal'/> {selectedSite.handicap_entrance}</p>
-              <Button onClick={(e) => props.handleSiteClick(e, selectedSite)}>
+              <h4>{clickededSite.site_name}</h4>
+          <p>District {clickededSite.council_district}</p>
+          <p>{clickededSite.street_number + ' ' + clickededSite.street_name + ', ' + clickededSite.borough}</p>
+              <p><Icon name='wheelchair' color='teal'/> {clickededSite.handicap_entrance}</p>
+              <Button onClick={(e) => props.handleSiteClick(e, clickededSite)}>
                     <Icon name='comments outline' />Chat</Button>
             </div>
             
