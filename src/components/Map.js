@@ -32,7 +32,9 @@ export default function App(props) {
   
   return (
     
-      <> 
+    <> 
+    <Form.Input fluid placeholder="Site Address" onChange={props.handleChange}
+             icon={{ name: 'search'}} />
        <ReactMapGL {...viewport}
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
           mapStyle="mapbox://styles/lisalarochelle/ck36bxl2r08n81cpi5b8l1u7v"
@@ -40,8 +42,6 @@ export default function App(props) {
             setViewport(viewport)
           }
         } > 
-        <Form.Input fluid placeholder="Site Address" onChange={props.handleChange}
-                 icon={{ name: 'search'}} />
         {props.searchResults(props.searchTerm).map((site) => (
          <Marker key={site.id} latitude={parseFloat(site.latitude)} longitude={parseFloat(site.longitude)}>
           <div>
