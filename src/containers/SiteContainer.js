@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Site from '../components/Site'
-import {Segment, Form, Breadcrumb, Header, Icon} from 'semantic-ui-react'
+import {Segment, Form, Breadcrumb, Header, Icon, Card, Button} from 'semantic-ui-react'
 import ballotBox from '../BallotIcon.svg'
 
 export class SiteContainer extends Component {
@@ -32,7 +32,7 @@ export class SiteContainer extends Component {
             <>
                 <Segment style={{overflowY: 'scroll', height: 560, marginleft: '20px'  }}>
                 { this.props.searchResults(this.props.searchTerm).map(site => {
-                    return <Site  
+                    return  <Card
                     key={site.id} 
                     site={site} 
                     channel={this.props.channel}
@@ -42,8 +42,14 @@ export class SiteContainer extends Component {
                     handleSiteClick={this.props.handleSiteClick}
                     count={this.props.count}
                     color={this.props.color}
-                    alertClick={this.props.alertClick}>                           
-                    </Site>
+                    alertClick={this.props.alertClick}
+                    latitude={site.latitude} longtitude={site.longitude}
+                    onClick={(e) => this.props.handleSiteClick(e, site)}> 
+                    <p>{site.voter_entrance}, {site.city}</p>
+                    <strong>{site.site_name}</strong>   
+                    <Button>
+                        <Icon name='comments outline' />Chat</Button>
+                    </Card> 
                     })
                 } 
                 </Segment>
@@ -56,7 +62,7 @@ export class SiteContainer extends Component {
 
         </div>
     )
-    }
+}
 }
 
 export default SiteContainer
@@ -66,42 +72,56 @@ export default SiteContainer
 // }
 
 // handleSiteClick = (e, site) => {
-//     e.preventDefault()
-//     console.log(site.id)
-
-//     this.props.setSelectedSite(site)
-//     this.props.history.push(`/chat/${site.id}`)   
-//   }
-
-// searchResults = (searchWord) => {
-//     // debugger
-//     if (this.props.sites) {
-//         return this.props.sites.filter(site => {
-    //             if (site.voter_entrance && this.searchTerm !== ""){
-//                 return site.voter_entrance.includes(searchWord)}
-//             })
-//         } 
-//     }
-
-//     handleChange = (e) => {   
-//         this.setState({
-    //             searchTerm: e.target.value,
-    //         }, () => this.searchResults(this.state.searchTerm))
-    //     }
-
+    //     e.preventDefault()
+    //     console.log(site.id)
     
-// makeSiteMarkers = () => {
-//     return this.props.map((site) => 
-// <Marker key={site.id}
-//         latitude={site.attributes.latitude}
-//         longitude={site.attributes.longitude}
-//         onClick={(e) => this.setSelectedsite(null, e)}
-//     >
-//         <button className="ballotBox" onClick={(e) => {
-//             e.preventDefault()
-//             this.props.setSelectedsite(site, e)
-//         }}>
-//             <img src = {ballotBox} alt="site location" />
-//         </button>
-//     </Marker>    
-//     )} 
+    //     this.props.setSelectedSite(site)
+    //     this.props.history.push(`/chat/${site.id}`)   
+    //   }
+    
+    // searchResults = (searchWord) => {
+        //     // debugger
+        //     if (this.props.sites) {
+            //         return this.props.sites.filter(site => {
+                //             if (site.voter_entrance && this.searchTerm !== ""){
+                    //                 return site.voter_entrance.includes(searchWord)}
+                    //             })
+                    //         } 
+                    //     }
+                    
+                    //     handleChange = (e) => {   
+                        //         this.setState({
+                            //             searchTerm: e.target.value,
+                            //         }, () => this.searchResults(this.state.searchTerm))
+    //     }
+    
+    
+    // makeSiteMarkers = () => {
+        //     return this.props.map((site) => 
+        // <Marker key={site.id}
+        //         latitude={site.attributes.latitude}
+        //         longitude={site.attributes.longitude}
+        //         onClick={(e) => this.setSelectedsite(null, e)}
+        //     >
+        //         <button className="ballotBox" onClick={(e) => {
+            //             e.preventDefault()
+            //             this.props.setSelectedsite(site, e)
+            //         }}>
+            //             <img src = {ballotBox} alt="site location" />
+            //         </button>
+            //     </Marker>    
+            //     )} 
+            
+            
+//<Site  
+// key={site.id} 
+// site={site} 
+// channel={this.props.channel}
+// messages={this.props.messages}
+// siteClicked={this.props.siteClicked}
+// selectedSite={this.props.selectedSite}
+// handleSiteClick={this.props.handleSiteClick}
+// count={this.props.count}
+// color={this.props.color}
+// alertClick={this.props.alertClick}>                           
+// </Site>
