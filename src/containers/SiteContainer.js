@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Site from '../components/Site'
 import {Segment, Form, Breadcrumb, Header, Icon, Card, Button} from 'semantic-ui-react'
 import ballotBox from '../BallotIcon.svg'
 
