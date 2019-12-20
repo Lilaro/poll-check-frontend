@@ -1,6 +1,6 @@
 import ReactMapGL, {Marker, Popup} from 'react-map-gl'
 import React, {useState, useEffect } from 'react'
-import {Icon, Button, Form, Header} from 'semantic-ui-react'
+import {Icon, Button, Form} from 'semantic-ui-react'
 import ballotBox from '../BallotIcon.svg'
 
 

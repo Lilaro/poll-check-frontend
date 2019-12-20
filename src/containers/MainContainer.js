@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Map from '../components/Map'
 import {Grid, Header, Breadcrumb} from 'semantic-ui-react'
-import {withRouter, Route} from 'react-router'
+import {withRouter} from 'react-router'
 import ballotBox from '../BallotIcon.svg'
 
 export class MainContainer extends Component {

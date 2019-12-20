@@ -1,5 +1,5 @@
 import React from 'react'
-import {Form, Segment, Card} from 'semantic-ui-react'
+import {Form, Segment} from 'semantic-ui-react'
 
 export default function Signup(props) {
     return (

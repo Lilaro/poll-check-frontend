@@ -1,5 +1,5 @@
 import React from 'react'
-import {Form, Card, Segment} from 'semantic-ui-react'
+import {Form, Segment} from 'semantic-ui-react'
 
 export default function Login(props) {
     return (

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Comment, CommentGroup, Card, Segment} from 'semantic-ui-react'
+import {Comment, CommentGroup, Segment} from 'semantic-ui-react'
 
 export class ChatList extends Component {
 
@@ -13,7 +13,7 @@ export class ChatList extends Component {
             {this.props.selectedSite.messages !== undefined ?
             
             this.props.messages.map(message => 
-              <div>
+              <div key={message.id}>
             <Comment margin='10px'>
               <Comment.Avatar src="https://image.flaticon.com/icons/svg/126/126486.svg"/>
               <Comment.Content>
