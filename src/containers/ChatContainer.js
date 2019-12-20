@@ -17,7 +17,7 @@ export class ChatContainer extends Component {
     profileClicked = (e) => {
         e.preventDefault()
         this.props.history.push('/profile')
-}
+    }
 
     render() {
         console.log('current user', this.props.currentUser.id)

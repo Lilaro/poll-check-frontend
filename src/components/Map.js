@@ -1,6 +1,6 @@
 import ReactMapGL, {Marker, Popup} from 'react-map-gl'
 import React, {useState, useEffect } from 'react'
-import {Icon, Button, Form, Card} from 'semantic-ui-react'
+import {Icon, Button, Form, Header} from 'semantic-ui-react'
 import ballotBox from '../BallotIcon.svg'
 
 
@@ -33,15 +33,17 @@ export default function App(props) {
   return (
     
     <> 
-    <Form.Input fluid placeholder="Site Address" onChange={props.handleChange}
-             icon={{ name: 'search'}} />
+   
        <ReactMapGL {...viewport}
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
           mapStyle="mapbox://styles/lisalarochelle/ck36bxl2r08n81cpi5b8l1u7v"
           onViewportChange={(viewport) => {
             setViewport(viewport)
           }
-        } > 
+        } 
+        height='615px' paddingLeft='10px'> 
+        <Form.Input placeholder="Site Address" onChange={props.handleChange}
+               icon={{ name: 'search'}} />
         {props.searchResults(props.searchTerm).map((site) => (
          <Marker key={site.id} latitude={parseFloat(site.latitude)} longitude={parseFloat(site.longitude)}>
           <div>

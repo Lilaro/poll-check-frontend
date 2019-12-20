@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Map from '../components/Map'
-import {Grid} from 'semantic-ui-react'
+import {Grid, Header, Breadcrumb} from 'semantic-ui-react'
 import {withRouter, Route} from 'react-router'
+import ballotBox from '../BallotIcon.svg'
 
 export class MainContainer extends Component {
 
@@ -44,6 +45,18 @@ export class MainContainer extends Component {
         }, () => this.searchResults(this.state.searchTerm), console.log(this.state.searchTerm)
         )
     }
+
+    logoutClicked = (e) => {
+        e.preventDefault()
+        
+        this.props.handleLogout()
+        this.props.history.push('/login')
+    }
+    
+    profileClicked = (e) => {
+        e.preventDefault()
+        this.props.history.push('/profile')
+    }
     
     render() {
         console.log('filteredSites', this.state.filteredSites);
@@ -54,12 +67,21 @@ export class MainContainer extends Component {
     console.log('channel', this.props.channel)
     return (
         <>
-         
-            <Grid columns={2} rows={2}>
+            <Grid rows={2}>
+                <Grid.Row>
+                <Header as='h3' padding='20px'><img src={ballotBox} alt="Ballot Box Icon" />
+                    Poll Check
+                    <Breadcrumb floated='right'>
+                <Breadcrumb.Section link onClick={this.profileClicked}><h4>my account</h4></Breadcrumb.Section>
+                <Breadcrumb.Divider>/</Breadcrumb.Divider>
+                <Breadcrumb.Section link onClick={this.logoutClicked}><h4>logout</h4></Breadcrumb.Section>
+            </Breadcrumb>    
+                </Header>
+                </Grid.Row>
            
             <Grid.Row>
-                <Grid.Column width={10}>
-                    <Map 
+                
+                    <Map
                         sites={this.props.sites} 
                         name={this.props.name}
                         token={this.props.token}
@@ -82,7 +104,7 @@ export class MainContainer extends Component {
                         alertClick={this.alertClick}
                         >
                     </Map>
-                </Grid.Column>
+               
                 </Grid.Row>
             </Grid>
             

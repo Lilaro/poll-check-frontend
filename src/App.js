@@ -155,7 +155,7 @@ fetchChannels = () => {
         })
         )
       }
-  
+
   render() {
     console.log('cUser', this.state.currentUser)
     console.log('messages', this.state.messages)
@@ -182,6 +182,8 @@ fetchChannels = () => {
             setSelectedSite={this.setSelectedSite}
             handleLogout={this.handleLogout}
             handleProfileClick={this.handleProfileClick}
+            logoutClicked={this.logoutClicked}
+            profileClicked={this.profileClicked}
             />}/>
           <Route path={`/chat/${this.state.selectedSite.id}`} render={(props) => <ChatContainer {...props}
             messages={this.state.messages}
@@ -196,7 +198,10 @@ fetchChannels = () => {
             setSelectedSite={this.setSelectedSite}
             maintainSelectedSite={this.maintainSelectedSite}
             handleLogout={this.handleLogout}
-            handleProfileClick={this.handleProfileClick}/>} />
+            handleProfileClick={this.handleProfileClick}
+            logoutClicked={this.logoutClicked}
+            profileClicked={this.profileClicked}
+            />} />
           <Route path='/profile' render={(props) => <Profile {...props}
             currentUser={this.state.currentUser}
             editName={this.state.editName}
