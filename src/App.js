@@ -147,14 +147,14 @@ fetchChannels = () => {
 
   }
   
-      maintainSelectedSite = () => {
-        fetch(`http://localhost:3000/poll_sites/${this.props.match.path.split('/')[2]}`)
-        .then(resp => resp.json())
-        .then(data => this.setState({
-            selectedSite: data
-        })
-        )
-      }
+  maintainSelectedSite = () => {
+    fetch(`http://localhost:3000/poll_sites/${this.props.match.path.split('/')[2]}`)
+    .then(resp => resp.json())
+    .then(data => this.setState({
+        selectedSite: data
+    })
+    )
+  }
 
   render() {
     console.log('cUser', this.state.currentUser)

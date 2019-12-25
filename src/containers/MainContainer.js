@@ -57,6 +57,8 @@ export class MainContainer extends Component {
         e.preventDefault()
         this.props.history.push('/profile')
     }
+
+    const 
     
     render() {
         console.log('filteredSites', this.state.filteredSites);
@@ -69,7 +71,7 @@ export class MainContainer extends Component {
         <>
             <Grid rows={2}>
                 <Grid.Row>
-                <Header as='h3' padding='20px'><img src={ballotBox} alt="Ballot Box Icon" />
+                <Header as='h3'><img src={ballotBox} alt="Ballot Box Icon" style={{paddingLeft: '30px'}}/>
                     Poll Check
                     <Breadcrumb floated='right'>
                 <Breadcrumb.Section link onClick={this.profileClicked}><h4>my account</h4></Breadcrumb.Section>
