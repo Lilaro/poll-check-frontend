@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Comment, CommentGroup, Segment} from 'semantic-ui-react'
+import {Comment, CommentGroup, Segment, Button} from 'semantic-ui-react'
 
 export class ChatList extends Component {
 
@@ -24,11 +24,12 @@ export class ChatList extends Component {
                 <Comment.Text>{message.content}</Comment.Text>
                 {/* <Comment.Action onClick={this.handleReplyClick}>reply</Comment.Action> */}
               </Comment.Content>
+            <Button size='mini'>Respond</Button>
             </Comment>
             </div>
             )
             :
-              null
+            null
           }
             
           </CommentGroup>
