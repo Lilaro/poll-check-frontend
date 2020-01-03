@@ -32,13 +32,13 @@ export class ChatContainer extends Component {
         return (
             <>
                  <Segment clearing height='60px'>
-                    <Header as='h2' floated='left'>
-                     {this.props.selectedSite.site_name}
-                    </Header>
-                     <Header as='h4' floated='right'>
+                     <Header as='h4' floated='left'>
                         <img src={ballotBox} alt="Ballot Box Icon"/>
                          Poll Check
                      </Header>
+                    <Header as='h2' floated='center'>
+                     {this.props.selectedSite.site_name}
+                    </Header>
                      <Breadcrumb floated='right'>
                 <Breadcrumb.Section link onClick={this.profileClicked}><h4>my account</h4></Breadcrumb.Section>
                 <Breadcrumb.Divider>/</Breadcrumb.Divider>
