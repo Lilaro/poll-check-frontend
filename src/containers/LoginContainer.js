@@ -14,7 +14,8 @@ class LoginContainer extends Component {
       signupPassword: '',
       loginEmail: '',
       loginPassword: '',
-      errors: []
+      errors: [],
+      signupClicked: false
   }
 
   loginSubmitted = (event) => {
@@ -80,6 +81,12 @@ class LoginContainer extends Component {
     })
   }
 
+  handleSignupClick = (event) => {
+    this.setState({
+      signupClicked: true
+    }, console.log('signup clicked'))
+  }
+
   render(){
       return (
         <Grid centered columns={2} rows={2}>
@@ -92,15 +99,17 @@ class LoginContainer extends Component {
           </Header> 
           </Grid.Row>
           <Grid.Row>
-        <Grid.Column>
+        {/* <Grid.Column> */}
+        {!this.state.signupClicked ? 
           <Login 
               loginEmail={this.state.loginEmail}
               loginPassword={this.state.loginPassword}
               handleChange={this.handleChange} 
               loginSubmitted={this.loginSubmitted}
+              handleSignupClick={this.handleSignupClick}
           />
-        </Grid.Column>
-        <Grid.Column>
+        
+        :
           <Signup 
           signupName={this.state.signupName} 
           signupEmail={this.state.signupEmail}
@@ -108,7 +117,8 @@ class LoginContainer extends Component {
           handleChange={this.handleChange} 
           SignUpSubmitted={this.SignUpSubmitted}
           />
-        </Grid.Column>
+      }
+        
         </Grid.Row> 
       </Grid>
       )

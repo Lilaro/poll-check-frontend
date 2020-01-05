@@ -1,5 +1,5 @@
 import React from 'react'
-import {Form, Segment} from 'semantic-ui-react'
+import {Form, Segment, Button} from 'semantic-ui-react'
 
 export default function Login(props) {
     return (
@@ -25,6 +25,7 @@ export default function Login(props) {
       <Form.Button content="login" type="submit" value="Log In"/>
      
     </Form> 
+    <Button size='mini' onClick={props.handleSignupClick} style={{margin: '15px'}}>sign up</Button>
     </Segment> 
         </div>
     )

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ChatList from './ChatList';
 import ChatForm from '../components/ChatForm'
 import {withRouter} from 'react-router'
-import {Breadcrumb, Header, Segment, Button} from 'semantic-ui-react';
+import {Breadcrumb, Header, Segment, Icon, Image} from 'semantic-ui-react';
 import ballotBox from '../BallotIcon.svg'
 
 export class ChatContainer extends Component {
@@ -31,30 +31,29 @@ export class ChatContainer extends Component {
    
         return (
             <>
-                 <Segment clearing height='60px'>
-                     <Header as='h4' floated='left'>
-                        <img src={ballotBox} alt="Ballot Box Icon"/>
+                <Segment clearing>
+                    <Header floated='left' onClick={this.backToMap} style={{cursor: 'pointer'}}>
+                        <img src={ballotBox} alt="Ballot Box Icon" style={{height: '40px', width: '40px'}}/>
                          Poll Check
-                     </Header>
-                    <Header as='h2' floated='center'>
-                     {this.props.selectedSite.site_name}
                     </Header>
-                     <Breadcrumb floated='right'>
-                <Breadcrumb.Section link onClick={this.profileClicked}><h4>my account</h4></Breadcrumb.Section>
-                <Breadcrumb.Divider>/</Breadcrumb.Divider>
-                <Breadcrumb.Section link onClick={this.logoutClicked}><h4>logout</h4></Breadcrumb.Section>
-            </Breadcrumb> 
-            <Button onClick={this.backToMap}>Back to Map</Button>  
+                    <Header floated='right'>
+                        {this.props.selectedSite.site_name}
+                    <Breadcrumb>
+                        <Breadcrumb.Section link onClick={this.profileClicked}><h4>my account</h4></Breadcrumb.Section>
+                        <Breadcrumb.Divider>/</Breadcrumb.Divider>
+                        <Breadcrumb.Section link onClick={this.logoutClicked}><h4>logout</h4></Breadcrumb.Section>
+                    </Breadcrumb> 
+                    </Header> 
                 </Segment>
                 <Segment color='black' width='1000px'>
-                <ChatList 
-                    selectedSite={this.props.selectedSite}
-                    messages={this.props.messages} />
-                <ChatForm newMessage={this.props.newMessage}
-                    handleChange={this.handleChange}
-                    submitMessage={this.props.submitMessage}
-                    messageChange={this.props.messageChange}
-                ></ChatForm>
+                    <ChatList 
+                        selectedSite={this.props.selectedSite}
+                        messages={this.props.messages} />
+                    <ChatForm newMessage={this.props.newMessage}
+                        handleChange={this.handleChange}
+                        submitMessage={this.props.submitMessage}
+                        messageChange={this.props.messageChange}>
+                    </ChatForm>
                 </Segment>
            </>
   

@@ -3,11 +3,10 @@ import {Comment, CommentGroup, Segment, Button} from 'semantic-ui-react'
 
 export class ChatList extends Component {
 
-  
+  //Try to implement scroll-to-top with scrollContainerRef again?
   render(){
     console.log(this.props.messages)
     return (
-    // ref={this.scrollContainerRef} inside segment opening
     <Segment style={{overflowY: 'scroll', height: 520 }}  >
           <CommentGroup>
             {this.props.selectedSite.messages !== undefined ?
@@ -17,7 +16,7 @@ export class ChatList extends Component {
             <Comment margin='10px'>
               <Comment.Avatar src="https://image.flaticon.com/icons/svg/126/126486.svg"/>
               <Comment.Content>
-                <Comment.Author d>{message.username}</Comment.Author>
+                <Comment.Author>{message.username}</Comment.Author>
                 <Comment.Metadata >
                     <div>{message.created_at.split("T")[0]}</div>
                 </Comment.Metadata>
