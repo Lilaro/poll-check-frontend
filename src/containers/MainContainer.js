@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Map from '../components/Map'
-import {Segment, Header, Breadcrumb} from 'semantic-ui-react'
+import {Grid, Header, Breadcrumb} from 'semantic-ui-react'
 import {withRouter} from 'react-router'
 import ballotBox from '../BallotIcon.svg'
 
@@ -69,43 +69,48 @@ export class MainContainer extends Component {
     console.log('channel', this.props.channel)
     return (
         <>
-            <Segment clearing>
-                <Header floated='left'><img src={ballotBox} alt="Ballot Box Icon"  style={{height: '40px', width: '40px'}}/>
+            <Grid rows={2}>
+                <Grid.Row>
+                <Header as='h3'><img src={ballotBox} alt="Ballot Box Icon" style={{paddingLeft: '30px'}}/>
                     Poll Check
+                    <Breadcrumb floated='right'>
+                <Breadcrumb.Section link onClick={this.profileClicked}><h4>my account</h4></Breadcrumb.Section>
+                <Breadcrumb.Divider>/</Breadcrumb.Divider>
+                <Breadcrumb.Section link onClick={this.logoutClicked}><h4>logout</h4></Breadcrumb.Section>
+            </Breadcrumb>    
                 </Header>
-                <Header floated='right'>
-                    <Breadcrumb >
-                    <Breadcrumb.Section link onClick={this.profileClicked}><h4>my account</h4></Breadcrumb.Section>
-                    <Breadcrumb.Divider>/</Breadcrumb.Divider>
-                    <Breadcrumb.Section link onClick={this.logoutClicked}><h4>logout</h4></Breadcrumb.Section>
-                </Breadcrumb> 
-                </Header>
-            </Segment>    
-            <Map
-                sites={this.props.sites} 
-                name={this.props.name}
-                token={this.props.token}
-                channel={this.props.channel}
-                userId={this.props.userId}
-                messages={this.props.messages}
-                displayedSite={this.props.site}
-                siteClicked={this.props.siteClicked}
-                selectedSite={this.props.selectedSite}
-                setSelectedSite={this.props.setSelectedSite}
-                handleSiteClick={this.handleSiteClick}
-                currentUser={this.props.currentUser}
-                submitMessage={this.props.submitMessage}
-                messageChange={this.props.messageChange}
-                searchTerm={this.state.searchTerm}
-                handleChange={this.handleChange}
-                searchResults={this.searchResults}
-                count={this.state.count}
-                color={this.state.color}
-                alertClick={this.alertClick}
-                >
-            </Map>
-
-    </>
+                </Grid.Row>
+           
+            <Grid.Row>
+                
+                    <Map
+                        sites={this.props.sites} 
+                        name={this.props.name}
+                        token={this.props.token}
+                        channel={this.props.channel}
+                        userId={this.props.userId}
+                        messages={this.props.messages}
+                        displayedSite={this.props.site}
+                        siteClicked={this.props.siteClicked}
+                        selectedSite={this.props.selectedSite}
+                        setSelectedSite={this.props.setSelectedSite}
+                        handleSiteClick={this.handleSiteClick}
+                        currentUser={this.props.currentUser}
+                        submitMessage={this.props.submitMessage}
+                        messageChange={this.props.messageChange}
+                        searchTerm={this.state.searchTerm}
+                        handleChange={this.handleChange}
+                        searchResults={this.searchResults}
+                        count={this.state.count}
+                        color={this.state.color}
+                        alertClick={this.alertClick}
+                        >
+                    </Map>
+               
+                </Grid.Row>
+            </Grid>
+            
+       </>
         )
     }
 }

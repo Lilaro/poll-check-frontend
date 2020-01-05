@@ -42,8 +42,8 @@ export default function App(props) {
           }
         } 
         height='615px' paddingLeft='10px'> 
-        <Form.Input placeholder="Site Address" onChange={props.handleChange}
-               icon={{ name: 'search'}} />
+        <Form.Input size='large' placeholder="Site Address" onChange={props.handleChange}
+               icon={{ name: 'search'}} style={{margin: '40px'}}/>
         {props.searchResults(props.searchTerm).map((site) => (
          <Marker key={site.id} latitude={parseFloat(site.latitude)} longitude={parseFloat(site.longitude)}>
           <div>
