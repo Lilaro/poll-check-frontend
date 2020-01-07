@@ -34,7 +34,7 @@ export class App extends Component {
     }
 
     componentDidMount() {
-      fetch('http://localhost:3000/poll_sites')
+      fetch('https://poll-check-backend.herokuapp.com/poll_sites')
     .then(resp => resp.json())
     .then(data => this.setState({
         sites: data
@@ -45,7 +45,7 @@ export class App extends Component {
 }
 
 fetchChannels = () => {
-    fetch('http://localhost:3000/channels', {
+    fetch('https://poll-check-backend.herokuapp.com/channels', {
     //   headers: {
     //     'Authorization': `Bearer ${this.props.token}`
     //   }
@@ -59,7 +59,7 @@ fetchChannels = () => {
   }
 
    fetchCurrentUser = () => {
-    fetch('http://localhost:3000/profile', {
+    fetch('https://poll-check-backend.herokuapp.com/profile', {
       headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}
     })
     .then(resp => resp.json())
@@ -73,7 +73,7 @@ fetchChannels = () => {
     e.preventDefault()
     e.persist()
   
-    fetch('http://localhost:3000/messages', {
+    fetch('https://poll-check-backend.herokuapp.com/messages', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
@@ -121,7 +121,7 @@ fetchChannels = () => {
   
   handleEditSubmit = (e) => {
     e.preventDefault()
-    fetch(`http://localhost:3000/users/${this.state.currentUser.id}`, {
+    fetch(`https://poll-check-backend.herokuapp.com/users/${this.state.currentUser.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -148,7 +148,7 @@ fetchChannels = () => {
   }
   
   maintainSelectedSite = () => {
-    fetch(`http://localhost:3000/poll_sites/${this.props.match.path.split('/')[2]}`)
+    fetch(`https://poll-check-backend.herokuapp.com/poll_sites/${this.props.match.path.split('/')[2]}`)
     .then(resp => resp.json())
     .then(data => this.setState({
         selectedSite: data

@@ -21,7 +21,7 @@ class LoginContainer extends Component {
   loginSubmitted = (event) => {
   event.preventDefault()
 
-  fetch("http://localhost:3000/login", {
+  fetch("https://poll-check-backend.herokuapp.com/login", {
     method: "POST",
     headers: {
     "Content-Type": "application/json"
@@ -50,7 +50,7 @@ class LoginContainer extends Component {
   SignUpSubmitted = (event) => {
     event.preventDefault()
 
-    fetch("http://localhost:3000/users", {
+    fetch("https://poll-check-backend.herokuapp.com/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

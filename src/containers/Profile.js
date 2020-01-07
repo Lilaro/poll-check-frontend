@@ -5,7 +5,7 @@ import ballotBox from '../BallotIcon.svg'
 export default class Profile extends Component {
 
     handleDeleteUser = () => {
-        fetch(`http://localhost:3000/users/${this.props.currentUser.id}`, {
+        fetch(`https://poll-check-backend.herokuapp.com/users/${this.props.currentUser.id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
