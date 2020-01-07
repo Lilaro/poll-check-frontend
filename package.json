@@ -1,6 +1,9 @@
 {
   "name": "poll-check",
   "version": "0.1.0",
+  "engines": {
+    "node": "12.9.0"
+  },
   "private": true,
   "dependencies": {
     "react": "^16.12.0",
