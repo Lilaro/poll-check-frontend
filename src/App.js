@@ -144,7 +144,7 @@ fetchChannels = () => {
       } 
     })
     this.fetchCurrentUser()
-
+    window.location.reload()
   }
   
   maintainSelectedSite = () => {
