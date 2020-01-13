@@ -4,7 +4,7 @@ A React.js and Ruby on Rails web application for communication about NYC polling
 
 ## Technologies and Frameworks Used
 # Backend
-[Named Link](https://rubyonrails.org/ "Ruby on Rails") - server framework
+[Ruby on Rails](https://rubyonrails.org/ "Ruby on Rails") - server framework
 [Named Link](https://www.postgresql.org/ "PostgreSQL") - database
 [Named Link](https://jwt.io/ "JWT") and [Named Link](https://rubygems.org/gems/bcrypt/versions/3.1.12 "bcrypt") - authorization, authentication and encryption
 [Named Link](https://github.com/Netflix/fast_jsonapi "fast JSON serializer")
