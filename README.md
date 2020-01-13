@@ -17,7 +17,7 @@ A React.js and Ruby on Rails web application for communication about NYC polling
 [Semantic UI](https://react.semantic-ui.com/) - UI component framework  
 [Mapbox GL](https://docs.mapbox.com/mapbox-gl-js/api/) - map api  
 
-### Installation
+## Installation
 
 * First, install and run this project's backend. Click here for instructions: [Poll Check Backend](https://github.com/Lilaro/poll-check-backend)
 
