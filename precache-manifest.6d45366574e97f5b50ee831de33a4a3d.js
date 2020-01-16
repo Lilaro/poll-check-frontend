@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "354d132c1321c559f21071c360395ea8",
+    "revision": "9b54f9fb85ea1b7d4de1d3a4dd1492d5",
     "url": "/poll-check-frontend/index.html"
   },
   {
-    "revision": "71e71c32a252806fc496",
+    "revision": "adbe229ed3bf8810d574",
     "url": "/poll-check-frontend/static/css/2.6e39e0ca.chunk.css"
   },
   {
-    "revision": "53cd9980bd5901fdf765",
+    "revision": "856f9ea280c557f95029",
     "url": "/poll-check-frontend/static/css/main.d6ce8f58.chunk.css"
   },
   {
-    "revision": "71e71c32a252806fc496",
-    "url": "/poll-check-frontend/static/js/2.b33c4684.chunk.js"
+    "revision": "adbe229ed3bf8810d574",
+    "url": "/poll-check-frontend/static/js/2.975163e5.chunk.js"
   },
   {
     "revision": "b782bd8081eb794ec893c4bc8c923e13",
-    "url": "/poll-check-frontend/static/js/2.b33c4684.chunk.js.LICENSE"
+    "url": "/poll-check-frontend/static/js/2.975163e5.chunk.js.LICENSE"
   },
   {
-    "revision": "53cd9980bd5901fdf765",
-    "url": "/poll-check-frontend/static/js/main.e3f1ff8f.chunk.js"
+    "revision": "856f9ea280c557f95029",
+    "url": "/poll-check-frontend/static/js/main.2312b52f.chunk.js"
   },
   {
     "revision": "272b21c1151f576626c4",
