@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/poll-check-frontend/static/css/main.d6ce8f58.chunk.css",
-    "main.js": "/poll-check-frontend/static/js/main.e97b392c.chunk.js",
+    "main.js": "/poll-check-frontend/static/js/main.734dfe56.chunk.js",
     "runtime-main.js": "/poll-check-frontend/static/js/runtime-main.7d3e4bbc.js",
     "static/css/2.6e39e0ca.chunk.css": "/poll-check-frontend/static/css/2.6e39e0ca.chunk.css",
     "static/js/2.b33c4684.chunk.js": "/poll-check-frontend/static/js/2.b33c4684.chunk.js",
     "index.html": "/poll-check-frontend/index.html",
-    "precache-manifest.b290c50716284dca01d03481dd47b127.js": "/poll-check-frontend/precache-manifest.b290c50716284dca01d03481dd47b127.js",
+    "precache-manifest.fcf8aa1d69a1d118bdffce6258d040ba.js": "/poll-check-frontend/precache-manifest.fcf8aa1d69a1d118bdffce6258d040ba.js",
     "service-worker.js": "/poll-check-frontend/service-worker.js",
     "static/js/2.b33c4684.chunk.js.LICENSE": "/poll-check-frontend/static/js/2.b33c4684.chunk.js.LICENSE",
     "static/media/BallotIcon.svg": "/poll-check-frontend/static/media/BallotIcon.22695509.svg",
@@ -17,6 +17,6 @@
     "static/css/2.6e39e0ca.chunk.css",
     "static/js/2.b33c4684.chunk.js",
     "static/css/main.d6ce8f58.chunk.css",
-    "static/js/main.e97b392c.chunk.js"
+    "static/js/main.734dfe56.chunk.js"
   ]
 }

@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4efce7a2dfcce5523ee96ad75a68d191",
+    "revision": "12dc58913fc3985d8953dc3a73b9ad58",
     "url": "/poll-check-frontend/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/poll-check-frontend/static/css/2.6e39e0ca.chunk.css"
   },
   {
-    "revision": "e3270a2a7d5cad65de74",
+    "revision": "bdff95b795caa47244c0",
     "url": "/poll-check-frontend/static/css/main.d6ce8f58.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/poll-check-frontend/static/js/2.b33c4684.chunk.js.LICENSE"
   },
   {
-    "revision": "e3270a2a7d5cad65de74",
-    "url": "/poll-check-frontend/static/js/main.e97b392c.chunk.js"
+    "revision": "bdff95b795caa47244c0",
+    "url": "/poll-check-frontend/static/js/main.734dfe56.chunk.js"
   },
   {
     "revision": "272b21c1151f576626c4",
