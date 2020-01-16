@@ -94,6 +94,7 @@ fetchChannels = () => {
         newMessage: ''
       }))
       e.target.reset()
+      // this.props.history.push(`/chat/${this.state.selectedSite.id}`)
 }
 
   messageChange = (e) => {
@@ -165,9 +166,9 @@ fetchChannels = () => {
     
     return (
       <>
-      <BrowserRouter>
+      {/* <BrowserRouter> */}
         <Switch>
-          <Route path='/login' render={(props) => <LoginContainer {...props} 
+          <Route path='/' render={(props) => <LoginContainer {...props} 
             gotToken={this.gotToken}
             fetchCurrentUser={this.fetchCurrentUser} />} />
           <Route path='/home' render={(props) => <MainContainer  {...props} 
@@ -209,11 +210,11 @@ fetchChannels = () => {
             editPassword={this.state.editPassword}
             handleEditChange={this.handleEditChange}
             handleEditSubmit={this.handleEditSubmit}/>} />
-          <Route exact path='/' render={(props) => <LoginContainer {...props} 
+          {/* <Route exact path='/' render={(props) => <LoginContainer {...props} 
             gotToken={this.gotToken}
-            fetchCurrentUser={this.fetchCurrentUser}/>} />
+            fetchCurrentUser={this.fetchCurrentUser}/>} /> */}
         </Switch>
-      </BrowserRouter>
+      {/* </BrowserRouter> */}
       </>
     )
   }
