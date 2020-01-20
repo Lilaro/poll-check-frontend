@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Form, Header, Segment} from 'semantic-ui-react'
+import {Form, Header, Segment, Breadcrumb} from 'semantic-ui-react'
 import ballotBox from '../BallotIcon.svg'
 
 export default class Profile extends Component {
@@ -22,6 +22,13 @@ export default class Profile extends Component {
         this.props.history.push('/home')
     }
 
+    logoutClicked = (e) => {
+        e.preventDefault()
+        
+        this.props.handleLogout()
+        this.props.history.push('/login')
+    }
+
     render() {
         console.log(this.props.currentUser);
         
@@ -31,6 +38,9 @@ export default class Profile extends Component {
                     <Header as='h3' onClick={this.backToMap} style={{cursor: 'pointer'}}>
                         <img src={ballotBox} alt="Ballot Box Icon"  style={{height: '40px', width: '40px'}}/>
                         Poll Check
+                    </Header>
+                    <Header floated='right'>
+                        <Breadcrumb link onClick={this.logoutClicked}><h4>logout</h4></Breadcrumb>
                     </Header>
                 </Segment>
                <h1> {this.props.currentUser.name} </h1>

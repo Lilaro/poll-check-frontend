@@ -24,6 +24,13 @@ export class ChatContainer extends Component {
         this.props.history.push('/home')
     }
 
+    logoutClicked = (e) => {
+        e.preventDefault()
+        
+        this.props.handleLogout()
+        this.props.history.push('/login')
+    }
+
     render() {
         console.log('current user', this.props.currentUser.id)
         console.log('selectedSite', this.props.selectedSite)

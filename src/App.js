@@ -184,7 +184,6 @@ fetchChannels = () => {
             setSelectedSite={this.setSelectedSite}
             handleLogout={this.handleLogout}
             handleProfileClick={this.handleProfileClick}
-            logoutClicked={this.logoutClicked}
             profileClicked={this.profileClicked}
             />}/>
           <Route exact path={`/chat/${this.state.selectedSite.id}`} render={(props) => <ChatContainer {...props}
@@ -201,7 +200,6 @@ fetchChannels = () => {
             maintainSelectedSite={this.maintainSelectedSite}
             handleLogout={this.handleLogout}
             handleProfileClick={this.handleProfileClick}
-            logoutClicked={this.logoutClicked}
             profileClicked={this.profileClicked}
             />} />
           <Route exact path='/profile' render={(props) => <Profile {...props}
@@ -210,7 +208,9 @@ fetchChannels = () => {
             editEmail={this.state.editEmail}
             editPassword={this.state.editPassword}
             handleEditChange={this.handleEditChange}
-            handleEditSubmit={this.handleEditSubmit}/>} />
+            handleEditSubmit={this.handleEditSubmit}
+            handleLogout={this.handleLogout}
+            />} />
           <Route exact path='/login' render={(props) => <LoginContainer {...props} 
             gotToken={this.gotToken}
             fetchCurrentUser={this.fetchCurrentUser}/>} />
