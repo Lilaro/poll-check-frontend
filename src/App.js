@@ -72,7 +72,7 @@ fetchChannels = () => {
   submitMessage = (e) => {
     e.preventDefault()
     e.persist()
-  
+    
     fetch('http://localhost:3000/messages', {
       method: 'POST',
       headers: {
@@ -90,14 +90,12 @@ fetchChannels = () => {
       })
       .then(resp => resp.json())
       .then(data => 
-        // this.setState({
-        // messages: [...this.state.messages, data],
-        // newMessage: ''
-      // })
-      console.log('message Post data', data)
+        this.setState({
+        messages: [...this.state.messages, data],
+        newMessage: ''
+      })
       )
       e.target.reset()
-      // this.props.history.push(`/chat/${this.state.selectedSite.id}`)
 }
 
   messageChange = (e) => {
