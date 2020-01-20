@@ -34,7 +34,7 @@ export class App extends Component {
     }
 
     componentDidMount() {
-      fetch('https://poll-check-backend.herokuapp.com/poll_sites')
+      fetch('http://localhost:3000/poll_sites')
     .then(resp => resp.json())
     .then(data => this.setState({
         sites: data
@@ -45,7 +45,7 @@ export class App extends Component {
 }
 
 fetchChannels = () => {
-    fetch('https://poll-check-backend.herokuapp.com/channels', {
+    fetch('http://localhost:3000/channels', {
     //   headers: {
     //     'Authorization': `Bearer ${this.props.token}`
     //   }
@@ -59,7 +59,7 @@ fetchChannels = () => {
   }
 
    fetchCurrentUser = () => {
-    fetch('https://poll-check-backend.herokuapp.com/profile', {
+    fetch('http://localhost:3000/profile', {
       headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}
     })
     .then(resp => resp.json())
@@ -73,7 +73,7 @@ fetchChannels = () => {
     e.preventDefault()
     e.persist()
   
-    fetch('https://poll-check-backend.herokuapp.com/messages', {
+    fetch('http://localhost:3000/messages', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
@@ -89,10 +89,13 @@ fetchChannels = () => {
       })
       })
       .then(resp => resp.json())
-      .then(data => this.setState({
-        messages: [...this.state.messages, data],
-        newMessage: ''
-      }))
+      .then(data => 
+        // this.setState({
+        // messages: [...this.state.messages, data],
+        // newMessage: ''
+      // })
+      console.log('message Post data', data)
+      )
       e.target.reset()
       // this.props.history.push(`/chat/${this.state.selectedSite.id}`)
 }
@@ -122,7 +125,7 @@ fetchChannels = () => {
   
   handleEditSubmit = (e) => {
     e.preventDefault()
-    fetch(`https://poll-check-backend.herokuapp.com/users/${this.state.currentUser.id}`, {
+    fetch(`http://localhost:3000/users/${this.state.currentUser.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -149,7 +152,7 @@ fetchChannels = () => {
   }
   
   maintainSelectedSite = () => {
-    fetch(`https://poll-check-backend.herokuapp.com/poll_sites/${this.props.match.path.split('/')[2]}`)
+    fetch(`http://localhost:3000/poll_sites/${this.props.match.path.split('/')[2]}`)
     .then(resp => resp.json())
     .then(data => this.setState({
         selectedSite: data
@@ -168,10 +171,10 @@ fetchChannels = () => {
       <>
       {/* <BrowserRouter> */}
         <Switch>
-          <Route path='/' render={(props) => <LoginContainer {...props} 
+          <Route exact path='/' render={(props) => <LoginContainer {...props} 
             gotToken={this.gotToken}
             fetchCurrentUser={this.fetchCurrentUser} />} />
-          <Route path='/home' render={(props) => <MainContainer  {...props} 
+          <Route exact path='/home' render={(props) => <MainContainer  {...props} 
             sites={this.state.sites}
             messages={this.state.messages}
             channel={this.state.channel}
@@ -186,7 +189,7 @@ fetchChannels = () => {
             logoutClicked={this.logoutClicked}
             profileClicked={this.profileClicked}
             />}/>
-          <Route path={`/chat/${this.state.selectedSite.id}`} render={(props) => <ChatContainer {...props}
+          <Route exact path={`/chat/${this.state.selectedSite.id}`} render={(props) => <ChatContainer {...props}
             messages={this.state.messages}
             newMessage={this.state.newMessage}
             channel={this.state.channel}
@@ -203,16 +206,16 @@ fetchChannels = () => {
             logoutClicked={this.logoutClicked}
             profileClicked={this.profileClicked}
             />} />
-          <Route path='/profile' render={(props) => <Profile {...props}
+          <Route exact path='/profile' render={(props) => <Profile {...props}
             currentUser={this.state.currentUser}
             editName={this.state.editName}
             editEmail={this.state.editEmail}
             editPassword={this.state.editPassword}
             handleEditChange={this.handleEditChange}
             handleEditSubmit={this.handleEditSubmit}/>} />
-          {/* <Route exact path='/' render={(props) => <LoginContainer {...props} 
+          <Route exact path='/login' render={(props) => <LoginContainer {...props} 
             gotToken={this.gotToken}
-            fetchCurrentUser={this.fetchCurrentUser}/>} /> */}
+            fetchCurrentUser={this.fetchCurrentUser}/>} />
         </Switch>
       {/* </BrowserRouter> */}
       </>
