@@ -23,7 +23,7 @@ export class ChatList extends Component {
                 <Comment.Text>{message.content}</Comment.Text>
                 {/* <Comment.Action onClick={this.handleReplyClick}>reply</Comment.Action> */}
               </Comment.Content>
-            <Button size='mini'>Respond</Button>
+            {/* <Button size='mini'>Respond</Button> */}
             </Comment>
             </div>
             )

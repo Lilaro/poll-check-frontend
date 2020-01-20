@@ -41,7 +41,7 @@ export default function App(props) {
             setViewport(viewport)
           }
         } 
-        height='615px' paddingLeft='10px'> 
+        height='700px' paddingLeft='10px'> 
         <Form.Input size='large' placeholder="Site Address" onChange={props.handleChange}
                icon={{ name: 'search'}} style={{margin: '40px'}}/>
         {props.searchResults(props.searchTerm).map((site) => (
