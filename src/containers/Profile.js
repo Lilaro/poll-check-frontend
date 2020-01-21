@@ -40,7 +40,7 @@ export default class Profile extends Component {
                         Poll Check
                     </Header>
                     <Header floated='right'>
-                        <Breadcrumb ><h4>logout</h4></Breadcrumb>
+                        <Breadcrumb onClick={this.logoutClicked} style={{cursor: 'pointer'}}>logout</Breadcrumb>
                     </Header>
                 </Segment>
                <h1> {this.props.currentUser.name} </h1>
