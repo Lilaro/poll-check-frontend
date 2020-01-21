@@ -64,7 +64,10 @@ fetchChannels = () => {
     })
     .then(resp => resp.json())
     .then(data => this.setState({
-      currentUser: data
+      currentUser: data,
+      editName: data.name,
+      editEmail: data.email,
+      editPassword: data.password
     }, () => console.log('current user', this.state.currentUser)
     ))
   }
