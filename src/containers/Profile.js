@@ -44,24 +44,26 @@ export default class Profile extends Component {
                     </Header>
                 </Segment>
                <h1> {this.props.currentUser.name} </h1>
-                {this.props.currentUser.email}
 
                 <Form style={{margin: '10px'}} onSubmit={this.props.handleEditSubmit}>
-                    <Form.Input 
+                    <Form.Input
+                        label="name"
                         type="text" 
                         name="editName"
                         placeholder={this.props.currentUser.name}
                         value={this.props.editName}
                         onChange={this.props.handleEditChange}
                     />
-                    <Form.Input 
+                    <Form.Input
+                        label="email"
                         type="text" 
                         name="editEmail"
                         placeholder={this.props.currentUser.email} 
                         value={this.props.editEmail}
                         onChange={this.props.handleEditChange}
                     />
-                    <Form.Input 
+                    <Form.Input
+                        label="password"
                         type="password" 
                         name="editPassword" 
                         placeholder='****' 
