@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Map from '../components/Map'
-import {Grid, Header, Breadcrumb} from 'semantic-ui-react'
+import {Segment, Header, Breadcrumb} from 'semantic-ui-react'
 import {withRouter} from 'react-router'
 import ballotBox from '../BallotIcon.svg'
 
@@ -11,13 +11,13 @@ export class MainContainer extends Component {
     }
 
 
-  alertClick = () => {
-      
-    this.setState({
-      count: this.state.count + 1,
-      color: 'red'
-    })
-  }
+    // alertClick = () => {
+        
+    //     this.setState({
+    //     count: this.state.count + 1,
+    //     color: 'red'
+    //     })
+    // }
 
     handleSiteClick = (e, site) => {
         e.preventDefault()
@@ -25,8 +25,8 @@ export class MainContainer extends Component {
 
         this.props.setSelectedSite(site)
         this.props.history.push(`/chat/${site.id}`)
-           
-      }
+            
+    }
     
     searchResults = (searchWord) => {
         // debugger
@@ -69,19 +69,24 @@ export class MainContainer extends Component {
     console.log('channel', this.props.channel)
     return (
         <>
-            <Grid rows={2}>
-                <Grid.Row>
-                <Header as='h3'><img src={ballotBox} alt="Ballot Box Icon" style={{paddingLeft: '30px'}}/>
+            {/* <Grid rows={2}>
+                <Grid.Row> */}
+            <Segment clearing>
+                <Header as='h3' floated='left'>
+                <img src={ballotBox} alt="Ballot Box Icon"  style={{height: '40px', width: '40px'}}/>
                     Poll Check
-                    <Breadcrumb floated='right'>
-                <Breadcrumb.Section link onClick={this.profileClicked}><h4>my account</h4></Breadcrumb.Section>
-                <Breadcrumb.Divider>/</Breadcrumb.Divider>
-                <Breadcrumb.Section link onClick={this.logoutClicked}><h4>logout</h4></Breadcrumb.Section>
-            </Breadcrumb>    
                 </Header>
-                </Grid.Row>
+                <Header floated='right'>
+                    <Breadcrumb floated='right'>
+                        <Breadcrumb.Section link onClick={this.profileClicked}><h4>my account</h4></Breadcrumb.Section>
+                        <Breadcrumb.Divider>/</Breadcrumb.Divider>
+                        <Breadcrumb.Section link onClick={this.logoutClicked}><h4>logout</h4></Breadcrumb.Section>
+                    </Breadcrumb>    
+                </Header>
+            </Segment>
+                {/* </Grid.Row> */}
            
-            <Grid.Row>
+            {/* <Grid.Row> */}
                 
                     <Map
                         sites={this.props.sites} 
@@ -107,8 +112,8 @@ export class MainContainer extends Component {
                         >
                     </Map>
                
-                </Grid.Row>
-            </Grid>
+                {/* </Grid.Row>
+            </Grid> */}
             
        </>
         )

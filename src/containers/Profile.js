@@ -35,7 +35,7 @@ export default class Profile extends Component {
         return (
             <div>
                 <Segment clearing>
-                    <Header as='h3' onClick={this.backToMap} style={{cursor: 'pointer'}}>
+                    <Header as='h3' onClick={this.backToMap} style={{cursor: 'pointer'}} floated='left'>
                         <img src={ballotBox} alt="Ballot Box Icon"  style={{height: '40px', width: '40px'}}/>
                         Poll Check
                     </Header>

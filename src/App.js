@@ -33,8 +33,8 @@ export class App extends Component {
       })
     }
 
-    componentDidMount() {
-      fetch('http://localhost:3000/poll_sites')
+  componentDidMount() {
+    fetch('http://localhost:3000/poll_sites')
     .then(resp => resp.json())
     .then(data => this.setState({
         sites: data
@@ -42,9 +42,9 @@ export class App extends Component {
     this.fetchChannels() 
     // this.fetchMessages() 
     this.fetchCurrentUser()  
-}
+  }
 
-fetchChannels = () => {
+  fetchChannels = () => {
     fetch('http://localhost:3000/channels', {
     //   headers: {
     //     'Authorization': `Bearer ${this.props.token}`
@@ -53,7 +53,7 @@ fetchChannels = () => {
     .then(resp => resp.json())
     .then(data => {
       this.setState({
-       channel: data[2]
+      channel: data[2]
       })
     })    
   }
@@ -65,9 +65,9 @@ fetchChannels = () => {
     .then(resp => resp.json())
     .then(data => this.setState({
       currentUser: data,
-      editName: data.name,
-      editEmail: data.email,
-      editPassword: data.password
+      // editName: data.name,
+      // editEmail: data.email,
+      // editPassword: data.password
     }, () => console.log('current user', this.state.currentUser)
     ))
   }
