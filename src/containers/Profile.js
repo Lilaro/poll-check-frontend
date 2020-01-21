@@ -50,12 +50,14 @@ export default class Profile extends Component {
                     <Form.Input 
                         type="text" 
                         name="editName"
+                        placeholder={this.props.currentUser.name}
                         value={this.props.editName}
                         onChange={this.props.handleEditChange}
                     />
                     <Form.Input 
                         type="text" 
-                        name="editEmail" 
+                        name="editEmail"
+                        placeholder={this.props.currentUser.email} 
                         value={this.props.editEmail}
                         onChange={this.props.handleEditChange}
                     />

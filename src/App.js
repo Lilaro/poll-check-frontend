@@ -42,6 +42,17 @@ export class App extends Component {
     this.fetchChannels() 
     // this.fetchMessages() 
     this.fetchCurrentUser()  
+    this.populateUserData()
+  }
+
+  populateUserData = () => {
+    if (this.state.currentUser) {
+      this.setState({
+        editName: this.state.currentUser.name,
+        editEmail: this.state.currentUser.email,
+        editPassword: this.state.currentUser.password
+      })
+    }
   }
 
   fetchChannels = () => {
@@ -99,7 +110,7 @@ export class App extends Component {
       })
       )
       e.target.reset()
-}
+  }
 
   messageChange = (e) => {
     e.preventDefault()
