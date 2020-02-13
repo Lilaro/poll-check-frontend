@@ -15,20 +15,6 @@ export default function App(props) {
   })
 
   const [clickededSite, setSite] = useState(null);
-
-  useEffect(() => {
-    const listener = e => {
-      if (e.key === "Escape") {
-        setSite(null);
-      }
-    }
-    window.addEventListener("keydown", listener);
-
-    return () => {
-      window.removeEventListener("keydown", listener)
-    }
-  }, [])
-  
   
   return (
     
@@ -59,27 +45,27 @@ export default function App(props) {
        
        {clickededSite ? (
           <Popup
-          key={clickededSite.id}
-          site={clickededSite} 
-          channel={props.channel}
-          messages={props.messages}
-          selectedSite={props.selectedSite}
-          siteClicked={props.siteClicked}
-          handleSiteClick={props.handleSiteClick}
-          latitude={parseFloat(clickededSite.latitude)}
-          longitude={parseFloat(clickededSite.longitude)}
-          onClose={() => {
-              setSite(null);
-            }}
-            >
-            <div>
-              <h4>{clickededSite.site_name}</h4>
-          <p>District {clickededSite.council_district}</p>
-          <p>{clickededSite.street_number + ' ' + clickededSite.street_name + ', ' + clickededSite.borough}</p>
-              <p><Icon name='wheelchair' color='teal'/> {clickededSite.handicap_entrance}</p>
-              <Button onClick={(e) => props.handleSiteClick(e, clickededSite)}>
-                    <Icon name='comments outline' />Chat</Button>
-            </div>
+            key={clickededSite.id}
+            site={clickededSite} 
+            channel={props.channel}
+            messages={props.messages}
+            selectedSite={props.selectedSite}
+            siteClicked={props.siteClicked}
+            handleSiteClick={props.handleSiteClick}
+            latitude={parseFloat(clickededSite.latitude)}
+            longitude={parseFloat(clickededSite.longitude)}
+            onClose={() => {
+                setSite(null);
+              }}
+              >
+              <div>
+                <h4>{clickededSite.site_name}</h4>
+                <p>District {clickededSite.council_district}</p>
+                <p>{clickededSite.street_number + ' ' + clickededSite.street_name + ', ' + clickededSite.borough}</p>
+                <p><Icon name='wheelchair' color='teal'/> {clickededSite.handicap_entrance}</p>
+                <Button onClick={(e) => props.handleSiteClick(e, clickededSite)}>
+                      <Icon name='comments outline' />Chat</Button>
+              </div>
             
           </Popup>       
           ) : null}
