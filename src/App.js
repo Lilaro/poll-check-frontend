@@ -1,12 +1,10 @@
 import './App.css';
-// import {useSelector, useDispatch} from 'react-redux'
-// import ReactMapGL, {Marker} from 'react-map-gl'
 import React, {Component} from 'react'
 import LoginContainer from './containers/LoginContainer'
 import MainContainer from './containers/MainContainer'
 import ChatContainer from './containers/ChatContainer'
 import Profile from './containers/Profile'
-import { BrowserRouter, Route, Switch} from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 export class App extends Component {
 
@@ -40,7 +38,6 @@ export class App extends Component {
         sites: data
     }));
     this.fetchChannels() 
-    // this.fetchMessages() 
     this.fetchCurrentUser()  
     this.populateUserData()
   }
@@ -57,9 +54,6 @@ export class App extends Component {
 
   fetchChannels = () => {
     fetch('http://localhost:3000/channels', {
-    //   headers: {
-    //     'Authorization': `Bearer ${this.props.token}`
-    //   }
     })
     .then(resp => resp.json())
     .then(data => {
@@ -76,9 +70,6 @@ export class App extends Component {
     .then(resp => resp.json())
     .then(data => this.setState({
       currentUser: data,
-      // editName: data.name,
-      // editEmail: data.email,
-      // editPassword: data.password
     }, () => console.log('current user', this.state.currentUser)
     ))
   }
@@ -117,7 +108,7 @@ export class App extends Component {
 
     this.setState({
         newMessage: e.target.value
-    }, () => console.log(this.state.newMessage)
+    }
     )
   }
 
@@ -132,7 +123,7 @@ export class App extends Component {
   handleEditChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
-    }, () => console.log(this.state.editName))
+    })
   }
   
   handleEditSubmit = (e) => {
@@ -173,15 +164,9 @@ export class App extends Component {
   }
 
   render() {
-    console.log('cUser', this.state.currentUser)
-    console.log('messages', this.state.messages)
-    console.log('channel', this.state.channel)
-    console.log('selectedSite', this.state.selectedSite);
-    ; 
     
     return (
       <>
-      {/* <BrowserRouter> */}
         <Switch>
           <Route exact path='/' render={(props) => <LoginContainer {...props} 
             gotToken={this.gotToken}
@@ -229,59 +214,9 @@ export class App extends Component {
             gotToken={this.gotToken}
             fetchCurrentUser={this.fetchCurrentUser}/>} />
         </Switch>
-      {/* </BrowserRouter> */}
       </>
     )
   }
 }
 
 export default App 
-
-
-// handleSiteClick = (e, site) => {
-  //   e.preventDefault()
-  //   this.setState({
-      //       selectedSite: site,
-      //       siteClicked: !this.state.siteClicked
-      //   }, () => console.log('site clicked', this.state.siteClicked)
-      //   )
-      //   debugger
-      //   // this.props.history.push('/chat')
-      // }
-      
-      
-      // gotToken = (token, userId, name) => {
-        //   localStorage.token = token
-        //   localStorage.userId = userId
-      //   localStorage.name = name
-      
-      //   debugger
-      
-      // this.setState({
-        //   token,
-        //   userId,
-        //   name
-        // }, () => console.log('gotToken invoked', this.state.name))
-        // }
-        
-
-  // renderChat = (renderProps) => {
-  //   const slug = renderProps.match.params.slug
-  //   const site = this.state.selectedSite.id === slug
-  //   if(site) {return <ChatContainer
-  //           messages={this.state.messages}
-  //           newMessage={this.state.newMessage}
-  //           channel={this.state.channel}
-  //           handleSiteClick={this.handleSiteClick}
-  //           currentUser={this.state.currentUser}
-  //           submitMessage={this.submitMessage} 
-  //           messageChange={this.messageChange}
-  //           siteClicked={this.state.siteClicked}
-  //           selectedSite={this.state.selectedSite} />}
-  //         else {
-  //         console.log('site', site);
-          
-  //           return 'not found'
-
-  //   }
-  // }

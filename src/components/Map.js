@@ -1,10 +1,10 @@
 import ReactMapGL, {Marker, Popup} from 'react-map-gl'
-import React, {useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {Icon, Button, Form} from 'semantic-ui-react'
 import ballotBox from '../BallotIcon.svg'
 
 
-export default function App(props) {
+export default function Map(props) {
  
   const [viewport, setViewport] = useState({
     latitude: 40.736191,
@@ -34,11 +34,8 @@ export default function App(props) {
          <Marker key={site.id} latitude={parseFloat(site.latitude)} longitude={parseFloat(site.longitude)}>
           <div>
               <img src={ballotBox} alt="Ballot Box Icon" className="marker-button"
-              onClick={(e) => setSite(site)}/>
-              
-              {/* <Icon link name="bullseye" color={props.color} onClick={props.alertClick}/> */}
-              
-              </div>
+              onClick={(e) => setSite(site)}/>            
+          </div>
 
          </Marker>
        ))}
@@ -72,46 +69,4 @@ export default function App(props) {
        </ReactMapGL>
       </>
     )
-    //Chat button on Popup will lead to chat site, I will implement search on Map,
-    // and eventually site container will be obsolete
   }
-  
-
-  
-  
-  // function icon  { 
-    //   let alertIcon;
-  //   <Icon link name="bullseye" onClick={handleClick}/>
-  // }
-  //   let iconForMap;
-  //   if ({count} === 1) {
-    
-  // console.log({count})
-  //   iconForMap = <Icon link name="bullseye" className="yellow" color='yellow' onClick={() => setCount(count + 1)}/>
-  // }
-  // else if ({count} === 2) {
-  //   iconForMap =  <Icon link name="bullseye" color='orange' onClick={() => setCount(count + 1)}/>
-  // }
-  //  else if ({count} >= 3) {
-    //     iconForMap = <Icon link name="bullseye" color='red' onClick={() => setCount(count + 1)}/>
-    //   } 
-  //   else { 
-    //     iconForMap =  <Icon link name="bullseye" onClick={() => setCount(count + 1)}/>
-    //   }
-    {/* <div>
-      {(() => {
-        switch{props.count {
-          case 0:
-            return <Icon link name="bullseye" onClick={props.alertClick}/>
-          case 1:
-            return <Icon link name="bullseye" color={props.color} onClick={props.alertClick}/>;
-          case 2:
-            return <Icon link name="bullseye" color={props.color} onClick={props.alertClick}/>;
-          case 3:
-            return <Icon link name="bullseye" color={props.color} onClick={props.alertClick}/>;
-          default:
-            return <Icon link name="bullseye" onClick={props.alertClick}/>;
-        }
-      })()}
-    </div> */}
-  //   return iconForMap
