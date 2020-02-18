@@ -10,13 +10,14 @@ export class MainContainer extends Component {
         searchTerm: ""
     }
 
+    //route to chat page when user clicks 'chat' button on selected site's popup
     handleSiteClick = (e, site) => {
         e.preventDefault()
-
         this.props.setSelectedSite(site)
         this.props.history.push(`/chat/${site.id}`)          
     }
     
+    //Filter through all poll sites by entrance address as user types
     searchResults = (searchWord) => {
         if (this.props.sites) {
             return this.props.sites.filter(site => {
@@ -25,7 +26,9 @@ export class MainContainer extends Component {
             })
         } 
     }
-        
+    
+    //Controlled forms! Populate searchTerm in state as user types
+    //and pass to searchResults function
     handleChange = (e) => {   
         this.setState({
             ...this.state,
@@ -33,12 +36,14 @@ export class MainContainer extends Component {
         }, () => this.searchResults(this.state.searchTerm))
     }
 
+    //for logout button in header
     logoutClicked = (e) => {
         e.preventDefault()      
         this.props.handleLogout()
         this.props.history.push('/login')
     }
     
+    //for profile button in header
     profileClicked = (e) => {
         e.preventDefault()
         this.props.history.push('/profile')
