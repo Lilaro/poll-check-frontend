@@ -51,43 +51,43 @@ export class MainContainer extends Component {
 
     return (
       <>
-         <Segment clearing>
-           <Header as='h3' floated='left'>
-             <img src={ballotBox} alt="Ballot Box Icon"  style={{height: '40px', width: '40px'}}/>
-                  Poll Check
-           </Header>
-           <Header floated='right'>
-             <Breadcrumb floated='right'>
-             <Breadcrumb.Section link onClick={this.profileClicked}><h4>my account</h4></Breadcrumb.Section>
-             <Breadcrumb.Divider>/</Breadcrumb.Divider>
-             <Breadcrumb.Section link onClick={this.logoutClicked}><h4>logout</h4></Breadcrumb.Section>
-             </Breadcrumb>    
-           </Header>
-         </Segment>
+        <Segment clearing>
+          <Header as='h3' floated='left'>
+            <img src={ballotBox} alt="Ballot Box Icon"  style={{height: '40px', width: '40px'}}/>
+            Poll Check
+          </Header>
+          <Header floated='right'>
+            <Breadcrumb floated='right'>
+              <Breadcrumb.Section link onClick={this.profileClicked}><h4>my account</h4></Breadcrumb.Section>
+              <Breadcrumb.Divider>/</Breadcrumb.Divider>
+              <Breadcrumb.Section link onClick={this.logoutClicked}><h4>logout</h4></Breadcrumb.Section>
+            </Breadcrumb>    
+          </Header>
+        </Segment>
                 
-          <Map
-              sites={this.props.sites} 
-              name={this.props.name}
-              token={this.props.token}
-              channel={this.props.channel}
-              userId={this.props.userId}
-              messages={this.props.messages}
-              displayedSite={this.props.site}
-              siteClicked={this.props.siteClicked}
-              selectedSite={this.props.selectedSite}
-              setSelectedSite={this.props.setSelectedSite}
-              handleSiteClick={this.handleSiteClick}
-              currentUser={this.props.currentUser}
-              submitMessage={this.props.submitMessage}
-              messageChange={this.props.messageChange}
-              searchTerm={this.state.searchTerm}
-              handleChange={this.handleChange}
-              searchResults={this.searchResults}
-              count={this.state.count}
-              color={this.state.color}
-              alertClick={this.alertClick}
-          >
-          </Map>           
+        <Map
+          sites={this.props.sites} 
+          name={this.props.name}
+          token={this.props.token}
+          channel={this.props.channel}
+          userId={this.props.userId}
+          messages={this.props.messages}
+          displayedSite={this.props.site}
+          siteClicked={this.props.siteClicked}
+          selectedSite={this.props.selectedSite}
+          setSelectedSite={this.props.setSelectedSite}
+          handleSiteClick={this.handleSiteClick}
+          currentUser={this.props.currentUser}
+          submitMessage={this.props.submitMessage}
+          messageChange={this.props.messageChange}
+          searchTerm={this.state.searchTerm}
+          handleChange={this.handleChange}
+          searchResults={this.searchResults}
+          count={this.state.count}
+          color={this.state.color}
+          alertClick={this.alertClick}
+        >
+        </Map>           
       </>
     )
   }
