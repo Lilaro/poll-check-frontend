@@ -17,7 +17,7 @@ export class MainContainer extends Component {
         this.props.history.push(`/chat/${site.id}`)          
     }
     
-    //Filter through all poll sites by entrance address as user types
+    //Filter through all poll sites by entrance address by comparing to searchTerm
     searchResults = (searchWord) => {
         if (this.props.sites) {
             return this.props.sites.filter(site => {
@@ -27,7 +27,7 @@ export class MainContainer extends Component {
         } 
     }
     
-    //Controlled forms! Populate searchTerm in state as user types
+    //Populate searchTerm in state as user types
     //and pass to searchResults function
     handleChange = (e) => {   
         this.setState({
@@ -36,14 +36,12 @@ export class MainContainer extends Component {
         }, () => this.searchResults(this.state.searchTerm))
     }
 
-    //for logout button in header
     logoutClicked = (e) => {
         e.preventDefault()      
         this.props.handleLogout()
         this.props.history.push('/login')
     }
     
-    //for profile button in header
     profileClicked = (e) => {
         e.preventDefault()
         this.props.history.push('/profile')
