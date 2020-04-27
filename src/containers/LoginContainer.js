@@ -94,7 +94,7 @@ class LoginContainer extends Component {
         <Header style={{margin: '30px'}}>
           <img src={ballotBox} alt="Ballot Box Icon"/>
           <h1>Poll Check</h1>
-          <h5>rides - lines - voting problems?</h5>
+          <h5>rides - lines - voting problems</h5>
           <h4>communicate with your neighbors about election day!</h4>
         </Header> 
         </Grid.Row>
