@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ChatList from './ChatList';
 import ChatForm from '../components/ChatForm'
 import {withRouter} from 'react-router'
-import {Breadcrumb, Header, Segment, Icon, Image} from 'semantic-ui-react';
+import {Breadcrumb, Header, Segment} from 'semantic-ui-react';
 import ballotBox from '../BallotIcon.svg'
 
 export class ChatContainer extends Component {

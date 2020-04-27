@@ -70,8 +70,7 @@ export class App extends Component {
     .then(resp => resp.json())
     .then(data => this.setState({
       currentUser: data,
-    }, () => console.log('current user', this.state.currentUser)
-    ))
+    }))
   }
 
   submitMessage = (e) => {
@@ -81,40 +80,38 @@ export class App extends Component {
     fetch('http://localhost:3000/messages', {
       method: 'POST',
       headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': `Bearer ${localStorage.token}`
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${localStorage.token}`
       },
       body: JSON.stringify({
-          content: this.state.newMessage,
-          user_id: this.state.currentUser.id,
-          poll_site_id: this.state.selectedSite.id,
-          channel_id: this.state.channel.id,
-          username: this.state.currentUser.name
+        content: this.state.newMessage,
+        user_id: this.state.currentUser.id,
+        poll_site_id: this.state.selectedSite.id,
+        channel_id: this.state.channel.id,
+        username: this.state.currentUser.name
       })
+    })
+    .then(resp => resp.json())
+    .then(data => 
+      this.setState({
+      messages: [...this.state.messages, data],
+      newMessage: ''
       })
-      .then(resp => resp.json())
-      .then(data => 
-        this.setState({
-        messages: [...this.state.messages, data],
-        newMessage: ''
-      })
-      )
-      e.target.reset()
+    )
+    e.target.reset()
   }
 
   messageChange = (e) => {
     e.preventDefault()
 
     this.setState({
-        newMessage: e.target.value
-    }
-    )
+      newMessage: e.target.value
+    })
   }
 
   handleLogout = () => {
     localStorage.clear()
-
     this.setState({
       currentUser: {}
     })
@@ -143,7 +140,6 @@ export class App extends Component {
     })
     .then(resp => resp.json())
     .then(data => {
-      console.log(data)
       if (data.errors) {
         this.setState({
           errors: data.errors
@@ -158,9 +154,8 @@ export class App extends Component {
     fetch(`http://localhost:3000/poll_sites/${this.props.match.path.split('/')[2]}`)
     .then(resp => resp.json())
     .then(data => this.setState({
-        selectedSite: data
-    })
-    )
+      selectedSite: data
+    }))
   }
 
   render() {
@@ -184,7 +179,7 @@ export class App extends Component {
             handleLogout={this.handleLogout}
             handleProfileClick={this.handleProfileClick}
             profileClicked={this.profileClicked}
-            />}/>
+            />} />
           <Route exact path={`/chat/${this.state.selectedSite.id}`} render={(props) => <ChatContainer {...props}
             messages={this.state.messages}
             newMessage={this.state.newMessage}
@@ -212,7 +207,8 @@ export class App extends Component {
             />} />
           <Route exact path='/login' render={(props) => <LoginContainer {...props} 
             gotToken={this.gotToken}
-            fetchCurrentUser={this.fetchCurrentUser}/>} />
+            fetchCurrentUser={this.fetchCurrentUser}
+          />} />
         </Switch>
       </>
     )

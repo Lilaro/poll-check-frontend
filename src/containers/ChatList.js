@@ -1,11 +1,10 @@
 import React, {Component} from 'react'
-import {Comment, CommentGroup, Segment, Button} from 'semantic-ui-react'
+import {Comment, CommentGroup, Segment} from 'semantic-ui-react'
 
 export class ChatList extends Component {
 
   //Try to implement scroll-to-top with scrollContainerRef again?
   render(){
-    console.log(this.props.messages)
     return (
     <Segment style={{overflowY: 'scroll', height: 520 }}  >
           <CommentGroup>

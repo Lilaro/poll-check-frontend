@@ -6,7 +6,6 @@ import Channel from '../components/Channel'
 export class ChannelList extends Component {
     
     state = {
-        // channels: [],
         channelClicked: false
     }
 

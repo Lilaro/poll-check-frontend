@@ -26,7 +26,6 @@ export class SiteContainer extends Component {
                 
                 <Form.Input fluid placeholder="Site Address" onChange={this.props.handleChange}
                     icon={{ name: 'search'}} />
-            
             <>
                 <Segment style={{overflowY: 'scroll', height: 560, marginleft: '20px'}}>
                     { this.props.searchResults(this.props.searchTerm).map(site => {
@@ -57,10 +56,9 @@ export class SiteContainer extends Component {
                     <Breadcrumb.Section link onClick={this.logoutClicked}><h3>logout</h3></Breadcrumb.Section>
                 </Breadcrumb>            
             </>
-
-        </div>
-    )
-}
+            </div>
+        )
+    }
 }
 
 export default SiteContainer
